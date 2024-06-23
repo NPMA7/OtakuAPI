@@ -10,11 +10,11 @@ const ongoingDonghua = async ({ page }) => {
     const ongoingResponse = await axios.get(
       `${DONGHUA_BASEURL}/anime/?page=${page}&status=ongoing&sub=&order=update`
     );
-    
+
     let ongoingDonghua = {
       status: "Ok",
       data: { ongoing_donghua: [] },
-      pagination: {}
+      pagination: {},
     };
 
     if (ongoingResponse.status === 200) {
@@ -31,7 +31,9 @@ const ongoingDonghua = async ({ page }) => {
           .text()
           .trim();
         const slugAttr = $(this).find("a.tip").attr("href");
-        const slug = slugAttr ? slugAttr.replace(`${DONGHUA_BASEURL}/anime`, "").replace("/", "") : null;
+        const slug = slugAttr
+          ? slugAttr.replace(`${DONGHUA_BASEURL}/anime`, "").replace("/", "")
+          : null;
         const poster = $(this).find("img").prop("data-src");
         const status = $(this).find("div.bt span.epx").text().trim();
         const url_main = slugAttr;
@@ -47,9 +49,17 @@ const ongoingDonghua = async ({ page }) => {
 
       $("div.postbody div.bixbox div.hpage").each(function () {
         const prevPageAttr = $(this).find("a.l").attr("href");
-        const prevPage = prevPageAttr ? prevPageAttr.replace("?page=", "").replace("&status=ongoing&sub=&order=update", "") : null;
+        const prevPage = prevPageAttr
+          ? prevPageAttr
+              .replace("?page=", "")
+              .replace("&status=ongoing&sub=&order=update", "")
+          : null;
         const nextPageAttr = $(this).find("a.r").attr("href");
-        const nextPage = nextPageAttr ? nextPageAttr.replace("?page=", "").replace("&status=ongoing&sub=&order=update", "") : null;
+        const nextPage = nextPageAttr
+          ? nextPageAttr
+              .replace("?page=", "")
+              .replace("&status=ongoing&sub=&order=update", "")
+          : null;
 
         ongoingDonghua.pagination = {
           previos_page: prevPage,
@@ -57,7 +67,6 @@ const ongoingDonghua = async ({ page }) => {
         };
       });
     }
-
 
     console.log("Data extraction and saving successful");
     return ongoingDonghua;

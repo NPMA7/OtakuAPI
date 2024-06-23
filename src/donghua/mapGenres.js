@@ -75,7 +75,6 @@ const mapGenresDonghua = async ({ slug, page }) => {
       });
     }
 
-
     console.log("Data extraction and saving successful");
     return mapGenresDonghua;
   } catch (error) {

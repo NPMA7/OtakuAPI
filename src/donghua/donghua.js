@@ -155,9 +155,9 @@ const Donghua = async ({ slug }) => {
       $("div.postbody div.bixbox div.listupd div.bsx a").each(function () {
         const title = $(this).attr("title").trim();
         const slug = $(this)
-        .attr("href")
-        ?.replace(`${DONGHUA_BASEURL}/anime/`, "")
-        .replace("/", "");
+          .attr("href")
+          ?.replace(`${DONGHUA_BASEURL}/anime/`, "")
+          .replace("/", "");
         const poster = $(this).find("div.limit img").prop("data-src");
         const type = $(this).find("div.limit div.typez").text().trim();
         const url_main = $(this).attr("href");

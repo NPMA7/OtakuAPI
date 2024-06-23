@@ -48,9 +48,9 @@ const searchDonghua = async ({ keyword, page }) => {
 
       $("div.postbody div.bixbox div.pagination").each(function () {
         const currentPage = $(this)
-        .find("span[aria-current='page']")
-        .text()
-        .trim();
+          .find("span[aria-current='page']")
+          .text()
+          .trim();
         const prevPageAttr = $(this).find("a.prev").attr("href");
         const prevPage = prevPageAttr
           ? prevPageAttr
@@ -63,8 +63,8 @@ const searchDonghua = async ({ keyword, page }) => {
           ? nextPageAttr
               .replace(`${DONGHUA_BASEURL}/page/`, "")
               .replace(`/?s=${keyword}`, "")
-          : null;;
-         
+          : null;
+
         searchDonghua.pagination = {
           page: currentPage,
           previos_page: prevPage,

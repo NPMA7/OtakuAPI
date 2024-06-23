@@ -62,9 +62,7 @@ const episodeDonghua = async ({ slug }) => {
           ? prevPageAttr.replace(`${DONGHUA_BASEURL}/`, "")
           : null;
 
-        const nextPageAttr = $(this)
-          .find("a[aria-label='next']")
-          .attr("href");
+        const nextPageAttr = $(this).find("a[aria-label='next']").attr("href");
         const nextPage = nextPageAttr
           ? nextPageAttr.replace(`${DONGHUA_BASEURL}/`, "")
           : null;

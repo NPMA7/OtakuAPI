@@ -17,7 +17,11 @@ const genresDonghua = async () => {
       const $ = cheerio.load(genresHtml);
       $("div.section ul.genre li").each(function () {
         const name = $(this).find("a").text().trim();
-        const slug = $(this).find('a').attr('href')?.replace(`${DONGHUA_BASEURL}\/genres\/`, '').replace('/', '');
+        const slug = $(this)
+          .find("a")
+          .attr("href")
+          ?.replace(`${DONGHUA_BASEURL}/genres/`, "")
+          .replace("/", "");
         const url_main = $(this).find("a").attr("href");
 
         genresDonghua.data.push({

@@ -10,10 +10,10 @@ const completedDonghua = async ({ page }) => {
     const completedResponse = await axios.get(
       `${DONGHUA_BASEURL}/anime/?page=${page}&status=completed&sub=&order=update`
     );
-    
+
     let completedDonghua = {
       status: "Ok",
-      data: { completed_donghua: []},  
+      data: { completed_donghua: [] },
       pagination: {
         prev_page: null,
         next_page: null,
@@ -35,10 +35,12 @@ const completedDonghua = async ({ page }) => {
           .text()
           .trim();
         const slugAttr = $(this).find("a.tip").attr("href");
-        const slug = slugAttr ? slugAttr.replace(`${DONGHUA_BASEURL}/anime`, "").replace("/", "") : null;
+        const slug = slugAttr
+          ? slugAttr.replace(`${DONGHUA_BASEURL}/anime`, "").replace("/", "")
+          : null;
         const poster = $(this).find("img").prop("data-src");
         const status = $(this).find("div.bt span.epx").text().trim();
-        const url_main = slugAttr;
+        const url_main = $(this).find("a.tip").attr("href");
 
         completedDonghua.data.completed_donghua.push({
           title,
@@ -51,17 +53,24 @@ const completedDonghua = async ({ page }) => {
 
       $("div.postbody div.bixbox div.hpage").each(function () {
         const prevPageAttr = $(this).find("a.l").attr("href");
-        const prevPage = prevPageAttr ? prevPageAttr.replace("?page=", "").replace("&status=completed&sub=&order=update", "") : null;
+        const prevPage = prevPageAttr
+          ? prevPageAttr
+              .replace("?page=", "")
+              .replace("&status=completed&sub=&order=update", "")
+          : null;
         const nextPageAttr = $(this).find("a.r").attr("href");
-        const nextPage = nextPageAttr ? nextPageAttr.replace("?page=", "").replace("&status=completed&sub=&order=update", "") : null;
+        const nextPage = nextPageAttr
+          ? nextPageAttr
+              .replace("?page=", "")
+              .replace("&status=completed&sub=&order=update", "")
+          : null;
 
         completedDonghua.pagination = {
-          previos_page: prevPage,
+          prev_page: prevPage,
           next_page: nextPage,
         };
       });
     }
-
 
     console.log("Data extraction and saving successful");
     return completedDonghua;
