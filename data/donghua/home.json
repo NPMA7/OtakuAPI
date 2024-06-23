@@ -3,6 +3,38 @@
     "data": {
         "latest_release": [
             {
+                "title": "Dragon Prince Yuan Episode 7 Indonesia, English Sub",
+                "slug": "dragon-prince-yuan-episode-7-indonesia-english-sub/",
+                "poster": "https://anichin.co.id/wp-content/uploads/2024/06/Wu-768x1366-1.webp",
+                "type": "ONA",
+                "current_episode": "Ep 7",
+                "url_main": "https://anichin.co.id/dragon-prince-yuan-episode-7-indonesia-english-sub/"
+            },
+            {
+                "title": "Legend of Martial Immortal Episode 66 Indonesia, English Sub",
+                "slug": "legend-of-martial-immortal-episode-66-indonesia-english-sub-2/",
+                "poster": "https://anichin.co.id/wp-content/uploads/2024/02/legend-martial-immortal-new.jpg",
+                "type": "ONA",
+                "current_episode": "Ep 66",
+                "url_main": "https://anichin.co.id/legend-of-martial-immortal-episode-66-indonesia-english-sub-2/"
+            },
+            {
+                "title": "Immortality Season 3 Episode 11 Indonesia, English Sub",
+                "slug": "immortality-season-3-episode-11-indonesia-english-sub/",
+                "poster": "https://anichin.co.id/wp-content/uploads/2024/04/immortality-s3.jpg",
+                "type": "ONA",
+                "current_episode": "Ep 11",
+                "url_main": "https://anichin.co.id/immortality-season-3-episode-11-indonesia-english-sub/"
+            },
+            {
+                "title": "Martial Master Episode 448 Indonesia, English Sub",
+                "slug": "martial-master-episode-448-indonesia-english-sub/",
+                "poster": "https://anichin.co.id/wp-content/uploads/2024/02/martial-master-new.png",
+                "type": "ONA",
+                "current_episode": "Ep 448",
+                "url_main": "https://anichin.co.id/martial-master-episode-448-indonesia-english-sub/"
+            },
+            {
                 "title": "Heavenly Brick Knight Episode 4 Indonesia, English Sub",
                 "slug": "heavenly-brick-knight-episode-4-indonesia-english-sub/",
                 "poster": "https://anichin.co.id/wp-content/uploads/2024/06/Heavenly-Brick-Knight-Subtitle-Indonesia-768x1024-1.webp",
@@ -131,36 +163,44 @@
                 "url_main": "https://anichin.co.id/wonderland-wan-jie-xian-zhong-season-5-episode-285-461-indonesia-english-sub/"
             },
             {
-                "title": "Big Brother Episode 42 Indonesia, English Sub",
-                "slug": "big-brother-episode-42-indonesia-english-sub/",
-                "poster": "https://anichin.co.id/wp-content/uploads/2024/03/big-brother-768x1365-1.jpeg",
+                "title": "The Daily Life of the Immortal King Season 4 Episode 12 Indonesia, English Sub",
+                "slug": "the-daily-life-of-the-immortal-king-season-4-episode-12-indonesia-english-sub/",
+                "poster": "https://anichin.co.id/wp-content/uploads/2023/12/daily-life-of-the-immortal-king-season-4_11zon.webp",
                 "type": "ONA",
-                "current_episode": "Ep 42",
-                "url_main": "https://anichin.co.id/big-brother-episode-42-indonesia-english-sub/"
+                "current_episode": "Upcoming",
+                "url_main": "https://anichin.co.id/the-daily-life-of-the-immortal-king-season-4-episode-12-indonesia-english-sub/"
             },
             {
-                "title": "Renegade Immortal Episode 41 Indonesia, English Sub",
-                "slug": "renegade-immortal-episode-41-indonesia-english-sub/",
-                "poster": "https://anichin.co.id/wp-content/uploads/2023/11/Renegade-Immortal-Subtitle-Indonesia.webp",
+                "title": "The Daily Life of the Immortal King Season 3 Episode 12 Subtitle",
+                "slug": "the-daily-life-of-the-immortal-king-season-3-episode-12-subtitle/",
+                "poster": "https://anichin.co.id/wp-content/uploads/2023/11/1699598563-9938-119526.jpg",
                 "type": "ONA",
-                "current_episode": "Ep 41",
-                "url_main": "https://anichin.co.id/renegade-immortal-episode-41-indonesia-english-sub/"
+                "current_episode": "Completed",
+                "url_main": "https://anichin.co.id/the-daily-life-of-the-immortal-king-season-3-episode-12-subtitle/"
             },
             {
-                "title": "Shrouding the Heavens Episode 62 Indonesia, English Sub",
-                "slug": "shrouding-the-heavens-episode-62-indonesia-english-sub/",
-                "poster": "https://anichin.co.id/wp-content/uploads/2023/10/Shrouding-the-Heavens.webp",
+                "title": "I Have Refined Qi For 3000 Years Episode 15 Subtitle",
+                "slug": "i-have-refined-qi-for-3000-years-episode-15-subtitle/",
+                "poster": "https://anichin.co.id/wp-content/uploads/2023/11/1699597930-6232-119940.jpg",
                 "type": "ONA",
-                "current_episode": "Ep 62",
-                "url_main": "https://anichin.co.id/shrouding-the-heavens-episode-62-indonesia-english-sub/"
+                "current_episode": "Completed",
+                "url_main": "https://anichin.co.id/i-have-refined-qi-for-3000-years-episode-15-subtitle/"
             },
             {
-                "title": "Tales of The Dark River Episode 22 Indonesia, English Sub",
-                "slug": "tales-of-the-dark-river-episode-22-indonesia-english-sub/",
-                "poster": "https://anichin.co.id/wp-content/uploads/2024/04/Tales-Of-Dark-River-1.webp",
+                "title": "The Rich God Episode 17 indonesia, english Sub",
+                "slug": "the-rich-god-episode-17-indonesia-english-sub/",
+                "poster": "https://anichin.co.id/wp-content/uploads/2023/11/1699556641-8671-135290.jpg",
                 "type": "ONA",
-                "current_episode": "Ep 22",
-                "url_main": "https://anichin.co.id/tales-of-the-dark-river-episode-22-indonesia-english-sub/"
+                "current_episode": "Ongoing",
+                "url_main": "https://anichin.co.id/the-rich-god-episode-17-indonesia-english-sub/"
+            },
+            {
+                "title": "Little Master’s Better Life Episode 6 Indonesia, English Sub",
+                "slug": "little-masters-better-life-episode-6-indonesia-english-sub/",
+                "poster": "https://anichin.co.id/wp-content/uploads/2023/11/1699553842-2341-138796.jpg",
+                "type": "ONA",
+                "current_episode": "Ongoing",
+                "url_main": "https://anichin.co.id/little-masters-better-life-episode-6-indonesia-english-sub/"
             },
             {
                 "title": "Heavenly Brick Knight Episode 4 Indonesia, English Sub",
@@ -171,22 +211,6 @@
                 "url_main": "https://anichin.co.id/heavenly-brick-knight-episode-4-indonesia-english-sub/"
             },
             {
-                "title": "Lord of all Lords Episode 23 Indonesia, English Sub",
-                "slug": "lord-of-all-lords-episode-23-indonesia-english-sub/",
-                "poster": "https://anichin.co.id/wp-content/uploads/2024/02/Lord-of-all-Lords.webp",
-                "type": "ONA",
-                "current_episode": "Ongoing",
-                "url_main": "https://anichin.co.id/lord-of-all-lords-episode-23-indonesia-english-sub/"
-            },
-            {
-                "title": "Martial Master Episode 447 Indonesia, English Sub",
-                "slug": "martial-master-episode-447-indonesia-english-sub/",
-                "poster": "https://anichin.co.id/wp-content/uploads/2024/02/martial-master-new.png",
-                "type": "ONA",
-                "current_episode": "Ongoing",
-                "url_main": "https://anichin.co.id/martial-master-episode-447-indonesia-english-sub/"
-            },
-            {
                 "title": "The Island of Siliang Episode 20 Indonesia, English Sub",
                 "slug": "the-island-of-siliang-episode-20-indonesia-english-sub/",
                 "poster": "https://anichin.co.id/wp-content/uploads/2024/06/The-Island-of-Siliang-s2-768x1045-1.jpg",
@@ -195,20 +219,36 @@
                 "url_main": "https://anichin.co.id/the-island-of-siliang-episode-20-indonesia-english-sub/"
             },
             {
-                "title": "[Wonderland] Wan Jie Xian Zhong Season 5 Episode 285 [461] Indonesia, English Sub",
-                "slug": "wonderland-wan-jie-xian-zhong-season-5-episode-285-461-indonesia-english-sub/",
-                "poster": "https://anichin.co.id/wp-content/uploads/2024/02/wonderland-s5.png",
-                "type": "ONA",
-                "current_episode": "Upcoming",
-                "url_main": "https://anichin.co.id/wonderland-wan-jie-xian-zhong-season-5-episode-285-461-indonesia-english-sub/"
-            },
-            {
-                "title": "Supreme God Emperor Episode 389 Indonesia, English Sub",
-                "slug": "supreme-god-emperor-episode-389-indonesia-english-sub/",
-                "poster": "https://anichin.co.id/wp-content/uploads/2023/11/1699062269-2925-114920.webp",
+                "title": "The Golden Wug Episode 3 Indonesia, English Sub",
+                "slug": "the-golden-wug-episode-3-indonesia-english-sub/",
+                "poster": "https://anichin.co.id/wp-content/uploads/2024/06/The-Golden-Wug-Jin-Can-Wangshi-金蚕往事-768x1142-1.webp",
                 "type": "ONA",
                 "current_episode": "Ongoing",
-                "url_main": "https://anichin.co.id/supreme-god-emperor-episode-389-indonesia-english-sub/"
+                "url_main": "https://anichin.co.id/the-golden-wug-episode-3-indonesia-english-sub/"
+            },
+            {
+                "title": "Dragon Prince Yuan Episode 7 Indonesia, English Sub",
+                "slug": "dragon-prince-yuan-episode-7-indonesia-english-sub/",
+                "poster": "https://anichin.co.id/wp-content/uploads/2024/06/Wu-768x1366-1.webp",
+                "type": "ONA",
+                "current_episode": "Ongoing",
+                "url_main": "https://anichin.co.id/dragon-prince-yuan-episode-7-indonesia-english-sub/"
+            },
+            {
+                "title": "Charm of Soul Pets Episode 5 Indonesia, English Sub",
+                "slug": "charm-of-soul-pets-episode-5-indonesia-english-sub/",
+                "poster": "https://anichin.co.id/wp-content/uploads/2024/05/The-Charm-of-Soul-Pets-1.webp",
+                "type": "ONA",
+                "current_episode": "Ongoing",
+                "url_main": "https://anichin.co.id/charm-of-soul-pets-episode-5-indonesia-english-sub/"
+            },
+            {
+                "title": "Martial Master Episode 448 Indonesia, English Sub",
+                "slug": "martial-master-episode-448-indonesia-english-sub/",
+                "poster": "https://anichin.co.id/wp-content/uploads/2024/02/martial-master-new.png",
+                "type": "ONA",
+                "current_episode": "Ongoing",
+                "url_main": "https://anichin.co.id/martial-master-episode-448-indonesia-english-sub/"
             }
         ],
         "complete_donghua": [
