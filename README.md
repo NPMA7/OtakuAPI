@@ -10,10 +10,10 @@ OtakuAPI is API for otaku, with lots of API, like anime, Donghua films etc
 | `/v1/donghua/ongoing/:page` | `GET` | - `page` (opt, number) | returns ongoing resources | [`/v1/donghua/ongoing/2`](https://otaku-api.vercel.app/v1/donghua/ongoing/2) |
 | `/v1/donghua/complete/:page` | `GET` | - `page` (opt, number)  | returns finished resources | [`/v1/donghua/complete/1`](https://otaku-api.vercel.app/v1/donghua/complete/1) |
 | `/v1/donghua/search/:keyword/:page` | `GET` | - `keyword` (required, string)  <br> - `episode` (required, number)  | returns search results from the given keyword | [`/v1/donghua/search/apotheosis`](https://otaku-api.vercel.app/v1/donghua/search/apotheosis) |
-| `/v1/donghua/slug/:slug` | `GET` | - `slug` (required, string)  | returns single resource | [`/v1/donghua/slug/jade-dynasty`](https://otaku-api.vercel.app/v1/donghua/slug/jade-dynasty) |
+| `/v1/donghua/slug/:slug` | `GET` | - `slug` (required, string)  | returns single resource | [`/v1/donghua/slug/perfect-world`](https://otaku-api.vercel.app/v1/donghua/slug/perfect-world) |
 | `/v1/donghua/episode/:slug` | `GET` | - `slug` (required, string) | returns episode resource (with stream url and download urls) | [`/v1/donghua/episode/heavenly-brick-knight-episode-3-indonesia-english-sub/`](https://otaku-api.vercel.app/v1/donghua/episode/heavenly-brick-knight-episode-3-indonesia-english-sub/) |
 | `/v1/donghua/genres` | `GET` | - | returns genre lists resource | [`/v1/donghua/genres`](https://otaku-api.vercel.app/v1/donghua/genres) |
-| `/v1/donghua/genres/:slug/:page` | `GET` | - `slug` (required, string) <br>  - `page` (opt, number) | returns lists by the genre's slug | [`/v1/genres/sports/1`](https://otaku-api.vercel.app/v1/genres/sports/1) |
+| `/v1/donghua/genres/:slug/:page` | `GET` | - `slug` (required, string) <br>  - `page` (opt, number) | returns lists by the genre's slug | [`/v1/donghua/genres/action/1`](https://otaku-api.vercel.app/v1/donghua/genres/action/1) |
 
 ## Response Example
 > response for `/v1/donghua/episode/heavenly-brick-knight-episode-3-indonesia-english-sub/`
@@ -134,7 +134,7 @@ $ git clone hhttps://github.com/NPMA7/OtakuAPI.git.
 
 - Then cd into the project root directory 
 ```bash
-$ cd otakuapi
+$ cd OtakuAPI
 ```
 
 - Inside the project root directory, run this command to install all the dependencies
