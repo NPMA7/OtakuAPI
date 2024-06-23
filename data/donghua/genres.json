@@ -1,0 +1,115 @@
+{
+    "status": "Ok",
+    "data": [
+        {
+            "name": "Action",
+            "slug": "action",
+            "url_main": "https://anichin.co.id/genres/action/"
+        },
+        {
+            "name": "Adult Cast",
+            "slug": "adult-cast",
+            "url_main": "https://anichin.co.id/genres/adult-cast/"
+        },
+        {
+            "name": "Adventure",
+            "slug": "adventure",
+            "url_main": "https://anichin.co.id/genres/adventure/"
+        },
+        {
+            "name": "Comedy",
+            "slug": "comedy",
+            "url_main": "https://anichin.co.id/genres/comedy/"
+        },
+        {
+            "name": "Demon",
+            "slug": "demon",
+            "url_main": "https://anichin.co.id/genres/demon/"
+        },
+        {
+            "name": "Donghua",
+            "slug": "donghua",
+            "url_main": "https://anichin.co.id/genres/donghua/"
+        },
+        {
+            "name": "Drama",
+            "slug": "drama",
+            "url_main": "https://anichin.co.id/genres/drama/"
+        },
+        {
+            "name": "Fantasy",
+            "slug": "fantasy",
+            "url_main": "https://anichin.co.id/genres/fantasy/"
+        },
+        {
+            "name": "Hentai",
+            "slug": "hentai",
+            "url_main": "https://anichin.co.id/genres/hentai/"
+        },
+        {
+            "name": "Historical",
+            "slug": "historical",
+            "url_main": "https://anichin.co.id/genres/historical/"
+        },
+        {
+            "name": "Isekai",
+            "slug": "isekai",
+            "url_main": "https://anichin.co.id/genres/isekai/"
+        },
+        {
+            "name": "Josei",
+            "slug": "josei",
+            "url_main": "https://anichin.co.id/genres/josei/"
+        },
+        {
+            "name": "Martial Arts",
+            "slug": "martial-arts",
+            "url_main": "https://anichin.co.id/genres/martial-arts/"
+        },
+        {
+            "name": "Monsters",
+            "slug": "monsters",
+            "url_main": "https://anichin.co.id/genres/monsters/"
+        },
+        {
+            "name": "mystery",
+            "slug": "mystery",
+            "url_main": "https://anichin.co.id/genres/mystery/"
+        },
+        {
+            "name": "Mythology",
+            "slug": "mythology",
+            "url_main": "https://anichin.co.id/genres/mythology/"
+        },
+        {
+            "name": "Novel Adaptation",
+            "slug": "novel-adaptation",
+            "url_main": "https://anichin.co.id/genres/novel-adaptation/"
+        },
+        {
+            "name": "Over Power",
+            "slug": "over-power",
+            "url_main": "https://anichin.co.id/genres/over-power/"
+        },
+        {
+            "name": "Romance",
+            "slug": "romance",
+            "url_main": "https://anichin.co.id/genres/romance/"
+        },
+        {
+            "name": "School",
+            "slug": "school",
+            "url_main": "https://anichin.co.id/genres/school/"
+        },
+        {
+            "name": "Sci-Fi",
+            "slug": "sci-fi",
+            "url_main": "https://anichin.co.id/genres/sci-fi/"
+        },
+        {
+            "name": "Supernatural",
+            "slug": "supernatural",
+            "url_main": "https://anichin.co.id/genres/supernatural/"
+        }
+    ]
+}

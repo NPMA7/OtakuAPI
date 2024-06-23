@@ -1,0 +1,102 @@
+{
+    "status": "Ok",
+    "data": {
+        "completed_donghua": [
+            {
+                "title": "The Eternal Strife",
+                "slug": "the-eternal-strife/",
+                "poster": "https://anichin.co.id/wp-content/uploads/2024/02/the-eternal-strife-768x1075-1.jpg",
+                "status": "Completed",
+                "url_main": "https://anichin.co.id/anime/the-eternal-strife/"
+            },
+            {
+                "title": "The Daily Life of the Immortal King Season 3",
+                "slug": "the-daily-life-of-the-immortal-king-season-3/",
+                "poster": "https://anichin.co.id/wp-content/uploads/2023/11/1699598563-9938-119526.jpg",
+                "status": "Completed",
+                "url_main": "https://anichin.co.id/anime/the-daily-life-of-the-immortal-king-season-3/"
+            },
+            {
+                "title": "I Have Refined Qi For 3000 Years",
+                "slug": "i-have-refined-qi-for-3000-years/",
+                "poster": "https://anichin.co.id/wp-content/uploads/2023/11/1699597930-6232-119940.jpg",
+                "status": "Completed",
+                "url_main": "https://anichin.co.id/anime/i-have-refined-qi-for-3000-years/"
+            },
+            {
+                "title": "I Pick Up Lot of Attributes",
+                "slug": "i-pick-up-lot-of-attributes/",
+                "poster": "https://anichin.co.id/wp-content/uploads/2023/11/1699562625-9831-126821.jpg",
+                "status": "Completed",
+                "url_main": "https://anichin.co.id/anime/i-pick-up-lot-of-attributes/"
+            },
+            {
+                "title": "Novoland : Eagle Flag",
+                "slug": "novoland-eagle-flag/",
+                "poster": "https://anichin.co.id/wp-content/uploads/2023/11/1699561853-5968-126741.jpg",
+                "status": "Completed",
+                "url_main": "https://anichin.co.id/anime/novoland-eagle-flag/"
+            },
+            {
+                "title": "Blade of The Guardians",
+                "slug": "blade-of-the-guardians/",
+                "poster": "https://anichin.co.id/wp-content/uploads/2023/11/1699560867-8660-110585.jpg",
+                "status": "Completed",
+                "url_main": "https://anichin.co.id/anime/blade-of-the-guardians/"
+            },
+            {
+                "title": "[Xing Chen Bian] Stellar Transformation Season 5",
+                "slug": "xing-chen-bian-stellar-transformation-season-5/",
+                "poster": "https://anichin.co.id/wp-content/uploads/2023/11/1699560185-1549-126730.jpg",
+                "status": "Completed",
+                "url_main": "https://anichin.co.id/anime/xing-chen-bian-stellar-transformation-season-5/"
+            },
+            {
+                "title": "Soul Of Light",
+                "slug": "soul-of-light/",
+                "poster": "https://anichin.co.id/wp-content/uploads/2023/11/1699558093-9347-136525.jpg",
+                "status": "Completed",
+                "url_main": "https://anichin.co.id/anime/soul-of-light/"
+            },
+            {
+                "title": "The Fallen Master",
+                "slug": "the-fallen-master/",
+                "poster": "https://anichin.co.id/wp-content/uploads/2023/11/1699557354-9989-126770.jpg",
+                "status": "Completed",
+                "url_main": "https://anichin.co.id/anime/the-fallen-master/"
+            },
+            {
+                "title": "Quanzhi Fashi 6",
+                "slug": "quanzhi-fashi-6/",
+                "poster": "https://anichin.co.id/wp-content/uploads/2023/11/1699555995-7169-135798.jpg",
+                "status": "Completed",
+                "url_main": "https://anichin.co.id/anime/quanzhi-fashi-6/"
+            },
+            {
+                "title": "The First Order",
+                "slug": "the-first-order/",
+                "poster": "https://anichin.co.id/wp-content/uploads/2023/09/1695948184-5530-137242.jpg",
+                "status": "Completed",
+                "url_main": "https://anichin.co.id/anime/the-first-order/"
+            },
+            {
+                "title": "Deep Sea",
+                "slug": "deep-sea/",
+                "poster": "https://anichin.co.id/wp-content/uploads/2023/10/1696388615-6943-132765.jpg",
+                "status": "Completed",
+                "url_main": "https://anichin.co.id/anime/deep-sea/"
+            },
+            {
+                "title": "White Snake :2 The Tribulation of the Green Snake",
+                "slug": "white-snake-2-the-tribulation-of-the-green-snake/",
+                "poster": "https://anichin.co.id/wp-content/uploads/2023/09/1695963524-9350-131996.jpg",
+                "status": "Completed",
+                "url_main": "https://anichin.co.id/anime/white-snake-2-the-tribulation-of-the-green-snake/"
+            }
+        ]
+    },
+    "pagination": {
+        "previos_page": null,
+        "next_page": null
+    }
+}

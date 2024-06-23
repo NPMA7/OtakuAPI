@@ -1,0 +1,20 @@
+{
+  "name": "otakuapi",
+  "version": "0.0.1",
+  "description": "OtakuAPI is API for otaku, with lots of API, like anime, Donghua films etc. ",
+  "main": "server.js",
+  "repository": "https://github.com/npma7/otakuapi",
+  "author": "npma",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "cheerio": "^1.0.0-rc.12",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "fs": "^0.0.1-security"
+  }
+}
