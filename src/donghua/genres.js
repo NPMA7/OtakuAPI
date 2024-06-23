@@ -1,7 +1,6 @@
 import axios from "axios";
 import cheerio from "cheerio";
 import dotenv from "dotenv";
-import fs from "fs";
 dotenv.config();
 
 const { DONGHUA_BASEURL } = process.env;
@@ -28,12 +27,6 @@ const genresDonghua = async () => {
         });
       });
     }
-
-    // Write JSON to file after scraping is complete
-    fs.writeFileSync(
-      "data/donghua/genres.json",
-      JSON.stringify(genresDonghua, null, 4)
-    );
 
     console.log("Data extraction and saving successful");
     return genresDonghua;

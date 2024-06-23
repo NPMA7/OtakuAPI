@@ -1,7 +1,6 @@
 import axios from "axios";
 import cheerio from "cheerio";
 import dotenv from "dotenv";
-import fs from "fs";
 dotenv.config();
 
 const { DONGHUA_BASEURL } = process.env;
@@ -63,10 +62,6 @@ const completedDonghua = async ({ page }) => {
       });
     }
 
-    fs.writeFileSync(
-      "data/donghua/completed.json",
-      JSON.stringify(completedDonghua, null, 4)
-    );
 
     console.log("Data extraction and saving successful");
     return completedDonghua;

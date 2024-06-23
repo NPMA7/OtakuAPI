@@ -1,7 +1,6 @@
 import axios from "axios";
 import cheerio from "cheerio";
 import dotenv from "dotenv";
-import fs from "fs";
 dotenv.config();
 
 const { DONGHUA_BASEURL } = process.env;
@@ -91,12 +90,6 @@ const homeDonghua = async ({page}) => {
 
    
     }
-
-    // Write JSON to file after scraping is complete
-    fs.writeFileSync(
-      "data/donghua/home.json",
-      JSON.stringify(homeDonghua, null, 4)
-    );
 
     console.log("Data extraction and saving successful");
     return homeDonghua;

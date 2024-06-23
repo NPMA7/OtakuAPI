@@ -106,7 +106,7 @@ router.get("/v1/donghua/genres", async (req, res) => {
   }
 });
 router.get("/v1/donghua/genres/:slug/:page?", async (req, res) => {
-  const { slug, page = 1 } = req.params; // Set default page to 1 if not provided
+  const { slug, page = 1 } = req.params;
   try {
     const data = await mapGenresDonghua({ slug, page });
    res.send(data);
