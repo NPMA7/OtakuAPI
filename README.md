@@ -6,14 +6,14 @@ OtakuAPI is API for otaku, with lots of API, like anime, Donghua films etc
 
 | End Point | Method | Params | Description | Example |
 | :-- | :-- | :-- | :-- | :-- |
-| `/v1/donghua/home` | `GET` | `-`  | returns home resources | [`/v1/donghua/home`](https://localhost/v1/donghua/home) |
-| `/v1/donghua/ongoing/:page` | `GET` | - `page` (opt, number) | returns ongoing resources | [`/v1/donghua/ongoing/2`](https://localhost/v1/donghua/ongoing/2) |
-| `/v1/donghua/complete/:page` | `GET` | - `page` (opt, number)  | returns finished resources | [`/v1/donghua/complete/1`](https://localhost/v1/donghua/complete/1) |
-| `/v1/donghua/search/:keyword/:page` | `GET` | - `keyword` (required, string)  <br> - `episode` (required, number)  | returns search results from the given keyword | [`/v1/donghua/search/apotheosis`](https://localhost/v1/donghua/search/apotheosis) |
-| `/v1/donghua/slug/:slug` | `GET` | - `slug` (required, string)  | returns single resource | [`/v1/donghua/slug/jade-dynasty`](https://localhost/v1/donghua/slug/jade-dynasty) |
-| `/v1/donghua/episode/:slug` | `GET` | - `slug` (required, string) <br> - `episode` (required, number)  | returns episode resource (with stream url and download urls) | [`/v1/donghua/episode/heavenly-brick-knight-episode-3-indonesia-english-sub/`](https://localhost/v1/donghua/episode/heavenly-brick-knight-episode-3-indonesia-english-sub/) |
-| `/v1/donghua/genres` | `GET` | - | returns genre lists resource | [`/v1/donghua/genres`](https://localhost/v1/donghua/genres) |
-| `/v1/donghua/genres/:slug/:page` | `GET` | - `slug` (required, string) <br>  - `page` (opt, number) | returns lists by the genre's slug | [`/v1/genres/sports/1`](https://localhost/v1/genres/sports/1) |
+| `/v1/donghua/home` | `GET` | `-`  | returns home resources | [`/v1/donghua/home`](https://otaku-api.vercel.app/v1/donghua/home) |
+| `/v1/donghua/ongoing/:page` | `GET` | - `page` (opt, number) | returns ongoing resources | [`/v1/donghua/ongoing/2`](https://otaku-api.vercel.app/v1/donghua/ongoing/2) |
+| `/v1/donghua/complete/:page` | `GET` | - `page` (opt, number)  | returns finished resources | [`/v1/donghua/complete/1`](https://otaku-api.vercel.app/v1/donghua/complete/1) |
+| `/v1/donghua/search/:keyword/:page` | `GET` | - `keyword` (required, string)  <br> - `episode` (required, number)  | returns search results from the given keyword | [`/v1/donghua/search/apotheosis`](https://otaku-api.vercel.app/v1/donghua/search/apotheosis) |
+| `/v1/donghua/slug/:slug` | `GET` | - `slug` (required, string)  | returns single resource | [`/v1/donghua/slug/jade-dynasty`](https://otaku-api.vercel.app/v1/donghua/slug/jade-dynasty) |
+| `/v1/donghua/episode/:slug` | `GET` | - `slug` (required, string) | returns episode resource (with stream url and download urls) | [`/v1/donghua/episode/heavenly-brick-knight-episode-3-indonesia-english-sub/`](https://otaku-api.vercel.app/v1/donghua/episode/heavenly-brick-knight-episode-3-indonesia-english-sub/) |
+| `/v1/donghua/genres` | `GET` | - | returns genre lists resource | [`/v1/donghua/genres`](https://otaku-api.vercel.app/v1/donghua/genres) |
+| `/v1/donghua/genres/:slug/:page` | `GET` | - `slug` (required, string) <br>  - `page` (opt, number) | returns lists by the genre's slug | [`/v1/genres/sports/1`](https://otaku-api.vercel.app/v1/genres/sports/1) |
 
 ## Response Example
 > response for `/v1/donghua/episode/heavenly-brick-knight-episode-3-indonesia-english-sub/`
@@ -26,7 +26,6 @@ OtakuAPI is API for otaku, with lots of API, like anime, Donghua films etc
         "donghua": {
             "title": "Heavenly Brick Knight",
             "slug": "heavenly-brick-knight/",
-            "url_main": "https://anichin.co.id/anime/heavenly-brick-knight/",
             "rating": "Rating 0.0",
             "status": "Ongoing",
             "studio": "Tang Kirin Culture",
@@ -41,17 +40,14 @@ OtakuAPI is API for otaku, with lots of API, like anime, Donghua films etc
                 {
                     "name": "Action",
                     "slug": "action",
-                    "url_main": "https://anichin.co.id/genres/action/"
                 },
                 {
                     "name": "Fantasy",
                     "slug": "fantasy",
-                    "url_main": "https://anichin.co.id/genres/fantasy/"
                 },
                 {
                     "name": "Isekai",
-                    "slug": "isekai",
-                    "url_main": "https://anichin.co.id/genres/isekai/"
+                    "slug": "isekai",   
                 }
             ]
         },
@@ -63,23 +59,19 @@ OtakuAPI is API for otaku, with lots of API, like anime, Donghua films etc
         "episodes_list": [
             {
                 "episode": "Heavenly Brick Knight Episode 4 Indonesia, English Sub",
-                "slug": "heavenly-brick-knight-episode-4-indonesia-english-sub",
-                "url_main": "https://anichin.co.id/heavenly-brick-knight-episode-4-indonesia-english-sub/"
+                "slug": "heavenly-brick-knight-episode-4-indonesia-english-sub",              
             },
             {
                 "episode": "Heavenly Brick Knight Episode 3 Indonesia, English Sub",
-                "slug": "heavenly-brick-knight-episode-3-indonesia-english-sub",
-                "url_main": "https://anichin.co.id/heavenly-brick-knight-episode-3-indonesia-english-sub/"
+                "slug": "heavenly-brick-knight-episode-3-indonesia-english-sub",          
             },
             {
                 "episode": "Heavenly Brick Knight Episode 2 Indonesia, English Sub",
-                "slug": "heavenly-brick-knight-episode-2-indonesia-english-sub",
-                "url_main": "https://anichin.co.id/heavenly-brick-knight-episode-2-indonesia-english-sub/"
+                "slug": "heavenly-brick-knight-episode-2-indonesia-english-sub",       
             },
             {
                 "episode": "Heavenly Brick Knight Episode 1 Indonesia, English Sub",
-                "slug": "heavenly-brick-knight-episode-1-indonesia-english-sub",
-                "url_main": "https://anichin.co.id/heavenly-brick-knight-episode-1-indonesia-english-sub/"
+                "slug": "heavenly-brick-knight-episode-1-indonesia-english-sub",             
             }
         ],
         "download_url": {
@@ -91,48 +83,41 @@ OtakuAPI is API for otaku, with lots of API, like anime, Donghua films etc
                 "title": "Heavenly Brick Knight Episode 3 Indonesia, English Sub",
                 "slug": "https:/anichin.co.id/heavenly-brick-knight-episode-3-indonesia-english-sub/",
                 "type": "",
-                "url_main": "https://anichin.co.id/heavenly-brick-knight-episode-3-indonesia-english-sub/"
             },
             {
                 "title": "Heavenly Brick Knight Episode 3 Indonesia, English Sub",
                 "slug": "https:/anichin.co.id/heavenly-brick-knight-episode-3-indonesia-english-sub/",
                 "type": "",
-                "url_main": "https://anichin.co.id/heavenly-brick-knight-episode-3-indonesia-english-sub/"
             },
             {
                 "title": "Supreme God Emperor",
                 "slug": "supreme-god-emperor",
                 "poster": "https://anichin.co.id/wp-content/uploads/2023/11/1699062269-2925-114920.webp",
                 "type": "ONA",
-                "url_main": "https://anichin.co.id/anime/supreme-god-emperor/"
             },
             {
                 "title": "Against the Gods",
                 "slug": "against-the-gods",
                 "poster": "https://anichin.co.id/wp-content/uploads/2023/12/against-the-god.webp",
                 "type": "OVA",
-                "url_main": "https://anichin.co.id/anime/against-the-gods/"
             },
             {
                 "title": "Wu Dong Qian Kun 4th Season",
                 "slug": "wu-dong-qian-kun-4th-season",
                 "poster": "https://anichin.co.id/wp-content/uploads/2023/11/1701057691-1817-139679.webp",
-                "type": "ONA",
-                "url_main": "https://anichin.co.id/anime/wu-dong-qian-kun-4th-season/"
+                "type": "ONA",                
             },
             {
                 "title": "I Pick Up Lot of Attributes",
                 "slug": "i-pick-up-lot-of-attributes",
                 "poster": "https://anichin.co.id/wp-content/uploads/2023/11/1699562625-9831-126821.jpg",
-                "type": "ONA",
-                "url_main": "https://anichin.co.id/anime/i-pick-up-lot-of-attributes/"
+                "type": "ONA",                
             },
             {
                 "title": "Immortality Season 3",
                 "slug": "immortality-season-3",
                 "poster": "https://anichin.co.id/wp-content/uploads/2024/04/immortality-s3.jpg",
-                "type": "ONA",
-                "url_main": "https://anichin.co.id/anime/immortality-season-3/"
+                "type": "ONA",                
             }
         ]
     }
@@ -144,7 +129,7 @@ OtakuAPI is API for otaku, with lots of API, like anime, Donghua films etc
 
 - Open up your terminal, then run this command to clone this repo
 ```bash
-$ git clone https://github.com/npma7/otakuapi.git
+$ git clone hhttps://github.com/NPMA7/OtakuAPI.git.
 ```
 
 - Then cd into the project root directory 
