@@ -23,7 +23,7 @@ const homeDonghua = async ({ page }) => {
     if (homeResponse.status === 200) {
       const homeHtml = homeResponse.data;
       const $ = cheerio.load(homeHtml);
-      $("div.postbody div.bixbox div.listupd div.bsx a").each(function () {
+      $("div.postbody div.bixbox div.listupd:first div.bsx a").each(function () {
         const title = $(this).attr("title").trim();
         const slug = $(this)
           .attr("href")
@@ -96,7 +96,7 @@ const homeDonghua = async ({ page }) => {
       });
     }
 
-    console.log("Data extraction and saving successful");
+    console.log("Fetching Success");
     return homeDonghua;
   } catch (error) {
     console.error("Error fetching the URL:", error);

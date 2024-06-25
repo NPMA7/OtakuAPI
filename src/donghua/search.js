@@ -73,7 +73,7 @@ const searchDonghua = async ({ keyword, page }) => {
       });
     }
 
-    console.log("Data extraction and saving successful");
+    console.log("Fetching Success");
     return searchDonghua;
   } catch (error) {
     console.error("Error fetching the URL:", error);

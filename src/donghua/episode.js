@@ -8,12 +8,13 @@ const { DONGHUA_BASEURL } = process.env;
 const episodeDonghua = async ({ slug }) => {
   try {
     const episodeResponse = await axios.get(`${DONGHUA_BASEURL}/${slug}`);
-
+    
     let episodeDonghua = {
       status: "Ok",
       data: {
         episode: "",
         stream_url: "",
+        download_url: {},
         donghua: {
           title: "",
           slug: "",
@@ -36,7 +37,6 @@ const episodeDonghua = async ({ slug }) => {
           page: null,
         },
         episodes_list: [],
-        download_url: {},
         recommendations: [],
       },
     };
@@ -190,6 +190,7 @@ const episodeDonghua = async ({ slug }) => {
         const slug = $(this).attr("href")
           ? $(this)
               .attr("href")
+              .replace(`${DONGHUA_BASEURL}/`, "")
               .replace(`${DONGHUA_BASEURL}/anime/`, "")
               .replace("/", "")
           : null;
@@ -207,7 +208,7 @@ const episodeDonghua = async ({ slug }) => {
       });
     }
 
-    console.log("Data extraction and saving successful");
+    console.log("Fetching Success");
     return episodeDonghua;
   } catch (error) {
     console.error("Error fetching the URL:", error);

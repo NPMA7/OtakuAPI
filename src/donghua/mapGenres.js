@@ -75,7 +75,7 @@ const mapGenresDonghua = async ({ slug, page }) => {
       });
     }
 
-    console.log("Data extraction and saving successful");
+    console.log("Fetching Success");
     return mapGenresDonghua;
   } catch (error) {
     console.error("Error fetching the URL:", error);
