@@ -38,17 +38,6 @@ router.get('/v1', validateApiKey, (req, res) => {
   });
 });
 
-router.get('/images/:link', (req, res) => {
-  const { link } = req.params;
-  const filePath = path.join(__dirname, '/public/images', link);
-
-  res.sendFile(filePath, (err) => {
-    if (err) {
-      console.error(`Failed to send file: ${filePath}`, err);
-      res.status(404).send('File not found');
-    }
-  });
-});
 
 router.use(routerAnime);
 

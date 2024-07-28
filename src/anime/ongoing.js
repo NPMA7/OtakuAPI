@@ -69,7 +69,7 @@ const ongoingAnime = async ({ page }) => {
               console.log(`Image already exists: ${localPosterPath}`);
             }
 
-            const posterUrl = `${serverRunningOn}/images/${posterFilename}`;
+            const posterUrl = `${serverRunningOn}/images/anime/${posterFilename}`;
 
             const current_episode = $(this).find("div.detpost div.epz").text().trim();
             const day_release = $(this).find("div.detpost div.epztipe").text().trim();

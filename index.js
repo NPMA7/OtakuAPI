@@ -27,7 +27,7 @@ if (!fs.existsSync(imagesDir)) {
 }
 
 // Endpoint to serve images
-app.get("/images/:filename", (req, res) => {
+app.get("/images/anime/:filename", (req, res) => {
   const filename = req.params.filename;
   const filepath = path.join(imagesDir, filename);
 
