@@ -1,4 +1,3 @@
-// src/anime/ongoing.js
 import axios from "axios";
 import Cheerio from "cheerio";
 import fs from "fs";
@@ -8,13 +7,8 @@ const isLocal = process.env.NODE_ENV !== 'production'; // Assume 'production' me
 const serverRunningOn = isLocal ? 'http://localhost:4444' : 'https://otaku-api.vercel.app';
 const { ANIME_BASEURL } = process.env;
 
-const imagesDir = path.join(process.cwd(), "tmp", "images");
-
-// Ensure the images directory exists
-if (!fs.existsSync(imagesDir)) {
-  fs.mkdirSync(imagesDir, { recursive: true });
-  console.log(`Created directory: ${imagesDir}`);
-}
+// Define the directory to save images
+const imagesDir = path.join("/tmp", "images");
 
 // Function to download an image and save it locally
 const downloadImage = async (url, filepath) => {

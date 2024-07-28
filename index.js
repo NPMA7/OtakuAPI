@@ -1,11 +1,10 @@
-// index.js
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
-import fs from "fs"; // Import the fs module
-import path from "path"; // Import the path module
+import fs from "fs"; // Import fs module
+import path from "path"; // Import path module
 import router from "./routes/routes.js";
 import validateApiKey from "./middleware/validateApiKey.js";
 
@@ -19,8 +18,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(validateApiKey);
 
-// Set up the images directory path
-const imagesDir = path.join(process.cwd(), "tmp", "images");
+// Define images directory path for temporary storage
+const imagesDir = path.join("/tmp", "images");
 
 // Ensure the images directory exists
 if (!fs.existsSync(imagesDir)) {
@@ -30,11 +29,11 @@ if (!fs.existsSync(imagesDir)) {
 // Endpoint to serve images
 app.get("/images/:filename", (req, res) => {
   const filename = req.params.filename;
-  const filepath = path.join(imagesDir, filename); // Ensure this path is absolute
+  const filepath = path.join(imagesDir, filename);
 
   // Check if the image exists
   if (fs.existsSync(filepath)) {
-    res.sendFile(filepath);
+    res.sendFile(filepath, { root: '/' });
   } else {
     res.status(404).send({ error: "Image not found" });
   }
