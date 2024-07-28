@@ -18,31 +18,13 @@ const corsOptions = {
   origin: '*', // Allow all origins
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'x-api-key'], // Adjust as necessary
-  credentials: true // Allow cookies if needed
+  credentials: false // Allow cookies if needed
 };
 
 app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(validateApiKey);
-
-const imagesDir = path.join("/tmp", "images");
-
-if (!fs.existsSync(imagesDir)) {
-  fs.mkdirSync(imagesDir, { recursive: true });
-}
-
-app.get("/images/anime/:filename", (req, res) => {
-  const filename = req.params.filename;
-  const filepath = path.join(imagesDir, filename);
-
-  if (fs.existsSync(filepath)) {
-    res.sendFile(filepath, { root: '/' });
-  } else {
-    res.status(404).send({ error: "Image not found" });
-  }
-});
-
 app.use(router);
 
 app.listen(port, () => {

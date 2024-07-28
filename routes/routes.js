@@ -10,12 +10,27 @@ const router = express.Router();
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(cookieParser());
 const __dirname = path.resolve();
+const imagesDir = path.join("/tmp", "images");
 
+if (!fs.existsSync(imagesDir)) {
+  fs.mkdirSync(imagesDir, { recursive: true });
+}
 router.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '/view/index.html')); 
 });
 
-router.post('/set-api-key', (req, res) => {
+router.get("/images/anime/:filename", (req, res) => {
+  const filename = req.params.filename;
+  const filepath = path.join(imagesDir, filename);
+
+  if (fs.existsSync(filepath)) {
+    res.sendFile(filepath, { root: '/' });
+  } else {
+    res.status(404).send({ error: "Image not found" });
+  }
+});
+
+router.post('/invalid', (req, res) => {
   const { apiKey } = req.body;
 
   if (apiKey === process.env.API_KEY) {
