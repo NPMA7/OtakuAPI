@@ -10,7 +10,7 @@ import validateApiKey from './middleware/validateApiKey.js';
 dotenv.config();
 
 const app = express();
-const port = 4444;
+const port = process.env.PORT || 4444; // Use dynamic port for hosting environments
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true })); 

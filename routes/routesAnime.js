@@ -1,13 +1,10 @@
 import express from "express";
-const routerAnime = express.Router();
-import homeAnime from "../src/anime/home.js";
+import dotenv from 'dotenv';
 import ongoingAnime from "../src/anime/ongoing.js";
-import completedAnime from "../src/anime/completed.js";
-import searchAnime from "../src/anime/search.js";
-import Anime from "../src/anime/anime.js";
-import genresAnime from "../src/anime/genres.js";
-import mapGenresAnime from "../src/anime/mapGenres.js";
-import episodeAnime from "../src/anime/episode.js";
+
+dotenv.config();
+
+const routerAnime = express.Router();
 
 routerAnime.get("/v1/anime", (req, res) =>
   res.send({
@@ -25,15 +22,6 @@ routerAnime.get("/v1/anime", (req, res) =>
     ],
   })
 );
-routerAnime.get("/v1/anime/home", async (req, res) => {
-  try {
-    const data = await homeAnime();
-    res.send(data);
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    res.send({ error: "Failed to fetch data" });
-  }
-});
 
 routerAnime.get("/v1/anime/ongoing/:page?", async (req, res) => {
   const { page = 1 } = req.params;
@@ -46,63 +34,14 @@ routerAnime.get("/v1/anime/ongoing/:page?", async (req, res) => {
   }
 });
 
-routerAnime.get("/v1/anime/complete/:page?", async (req, res) => {
-  const { page = 1 } = req.params;
+// Cron Job Endpoint
+routerAnime.get("/v1/anime/cron-job", async (req, res) => {
   try {
-    const data = await completedAnime({ page });
-    res.send(data);
+    await checkOngoingAnime(1); // Check for ongoing anime and download new posters
+    res.send({ status: "OK", message: "Anime check completed successfully." });
   } catch (error) {
-    console.error("Error fetching data:", error);
-    res.send({ error: "Failed to fetch data" });
-  }
-});
-routerAnime.get("/v1/anime/search/:keyword", async (req, res) => {
-  const { keyword } = req.params;
-  try {
-    const data = await searchAnime({ keyword });
-    res.send(data);
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    res.send({ error: "Failed to fetch data" });
-  }
-});
-routerAnime.get("/v1/anime/slug/:slug", async (req, res) => {
-  const { slug } = req.params;
-  try {
-    const data = await Anime({ slug });
-    res.send(data);
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    res.send({ error: "Failed to fetch data" });
-  }
-});
-routerAnime.get("/v1/anime/episode/:slug", async (req, res) => {
-  const { slug } = req.params;
-  try {
-    const data = await episodeAnime({ slug });
-    res.send(data);
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    res.send({ error: "Failed to fetch data" });
-  }
-});
-routerAnime.get("/v1/anime/genres", async (req, res) => {
-  try {
-    const data = await genresAnime();
-    res.send(data);
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    res.send({ error: "Failed to fetch data" });
-  }
-});
-routerAnime.get("/v1/anime/genres/:slug/:page?", async (req, res) => {
-  const { slug, page = 1} = req.params;
-  try {
-    const data = await mapGenresAnime({ slug, page });
-    res.send(data);
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    res.send({ error: "Failed to fetch data" });
+    console.error("Error in cron job:", error);
+    res.status(500).send({ error: "Failed to complete cron job task." });
   }
 });
 
