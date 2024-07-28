@@ -5,7 +5,7 @@ import validateApiKey from '../middleware/validateApiKey.js';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import routerAnime from './routesAnime.js';
-import routerDonghua from './routesDonghua.js';
+
 const router = express.Router();
 
 router.use(bodyParser.urlencoded({ extended: true }));
@@ -50,7 +50,6 @@ router.get('/images/:link', (req, res) => {
   });
 });
 
-router.use(routerDonghua);
 router.use(routerAnime);
 
 export default router;
