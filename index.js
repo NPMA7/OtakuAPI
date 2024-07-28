@@ -3,8 +3,6 @@ import cors from "cors";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
-import fs from "fs";
-import path from "path";
 import router from "./routes/routes.js";
 import validateApiKey from "./middleware/validateApiKey.js";
 
@@ -15,11 +13,10 @@ const port = process.env.PORT || 4444;
 
 // Configure CORS to allow all origins
 const corsOptions = {
-  origin: '*', // Allow all origins
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'x-api-key'], // Adjust as necessary
-  credentials: false // Allow cookies if needed
+  origin: '*', // Ganti dengan domain aplikasi Anda
+  optionsSuccessStatus: 200
 };
+
 
 app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: true }));

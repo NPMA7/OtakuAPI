@@ -1,5 +1,6 @@
 import express from 'express';
 import path from 'path';
+import fs from "fs";
 import validateApiKey from '../middleware/validateApiKey.js';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
