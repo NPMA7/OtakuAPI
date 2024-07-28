@@ -57,7 +57,7 @@ const ongoingAnime = async ({ page }) => {
       const ongoingHtml = response.data;
       const $ = Cheerio.load(ongoingHtml);
 
-      $("div.venutama div.rseries div.rapi:first div.venz ul li").each(
+      const promises = $("div.venutama div.rseries div.rapi:first div.venz ul li").map(
         async function () {
           const title = $(this)
             .find("div.detpost div.thumb div.thumbz h2")
@@ -76,6 +76,7 @@ const ongoingAnime = async ({ page }) => {
           const posterFilename = path.basename(originalPoster);
           const localPosterPath = path.join(imagesDir, posterFilename);
           
+          // Download image only if it does not exist
           if (!fs.existsSync(localPosterPath)) {
             await downloadImage(originalPoster, localPosterPath);
           }
@@ -113,7 +114,9 @@ const ongoingAnime = async ({ page }) => {
             url_example,
           });
         }
-      );
+      ).get(); // Convert jQuery object to array for promises
+
+      await Promise.all(promises);
 
       $("div.venutama div.pagination div.pagenavix").each(function () {
         const page = $(this).find('span[aria-current="page"]').text().trim();
@@ -145,3 +148,5 @@ const ongoingAnime = async ({ page }) => {
 };
 
 export default ongoingAnime;
+
+
