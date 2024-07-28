@@ -36,7 +36,7 @@ const mapGenresDonghua = async ({ slug, page }) => {
           .find("div.limit div.bt span.epx")
           .text()
           .trim();
-        const url_main = $(this).attr("href");
+        const url_example = $(this).attr("href");
 
         mapGenresDonghua.data.donghua.push({
           title,
@@ -44,7 +44,7 @@ const mapGenresDonghua = async ({ slug, page }) => {
           poster,
           type,
           current_episode,
-          url_main,
+          url_example,
         });
       });
 

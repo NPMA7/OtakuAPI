@@ -47,7 +47,7 @@ const completedAnime = async ({ page }) => {
             .find("div.detpost div.newnime")
             .text()
             .trim();
-          const url_main = $(this).find("div.detpost div.thumb a").attr("href");
+          const url_example = $(this).find("div.detpost div.thumb a").attr("href");
           completedAnime.data.push({
             title,
             slug,
@@ -55,7 +55,7 @@ const completedAnime = async ({ page }) => {
             current_episode,
             day_release,
             date_release,
-            url_main,
+            url_example,
           });
           $("div.venutama div.pagination div.pagenavix").each(function () {
             const page = $(this)

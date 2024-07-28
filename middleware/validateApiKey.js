@@ -1,7 +1,15 @@
 // middleware/validateApiKey.js
 import dotenv from 'dotenv';
-import express from 'express';
 dotenv.config();
+
+// Determine the environment
+const isLocal = process.env.NODE_ENV !== 'production'; // Assume 'production' means hosting environment
+
+// Set the server URL based on the environment
+const serverRunningOn = isLocal 
+    ? 'http://localhost:4444' // Your local URL
+    : 'https://otaku-api.vercel.app'; // Your hosting URL
+
 
 const validateApiKey = (req, res, next) => {
   // Cek API key dari header
@@ -23,7 +31,7 @@ const validateApiKey = (req, res, next) => {
   }
 
   // API key tidak valid atau tidak ditemukan
-  res.status(401).send({ error: 'Unauthorized' });
+  res.status(401).send({ error: 'Unauthorized', message: `please input api key at ${serverRunningOn}`});
 };
 
 export default validateApiKey;

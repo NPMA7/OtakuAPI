@@ -40,14 +40,14 @@ const completedDonghua = async ({ page }) => {
           : null;
         const poster = $(this).find("img").prop("data-src");
         const status = $(this).find("div.bt span.epx").text().trim();
-        const url_main = $(this).find("a.tip").attr("href");
+        const url_example = $(this).find("a.tip").attr("href");
 
         completedDonghua.data.completed_donghua.push({
           title,
           slug,
           poster,
           status,
-          url_main,
+          url_example,
         });
       });
 

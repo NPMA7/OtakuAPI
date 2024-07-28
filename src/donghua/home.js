@@ -35,7 +35,7 @@ const homeDonghua = async ({ page }) => {
           .find("div.limit div.bt span.epx")
           .text()
           .trim();
-        const url_main = $(this).attr("href");
+        const url_example = $(this).attr("href");
 
         homeDonghua.data.latest_release.push({
           title,
@@ -43,7 +43,7 @@ const homeDonghua = async ({ page }) => {
           poster,
           type,
           current_episode,
-          url_main,
+          url_example,
         });
       });
       $("div.postbody div.bixbox div.hpage").each(function () {
@@ -83,7 +83,7 @@ const homeDonghua = async ({ page }) => {
         const poster = $(this).find("div.limit img").prop("data-src");
         const type = $(this).find("div.limit div.typez").text().trim();
         const status = $(this).find("div.limit div.bt span.epx").text().trim();
-        const url_main = $(this).attr("href");
+        const url_example = $(this).attr("href");
 
         homeDonghua.data.complete_donghua.push({
           title,
@@ -91,7 +91,7 @@ const homeDonghua = async ({ page }) => {
           poster,
           status,
           type,
-          url_main,
+          url_example,
         });
       });
     }

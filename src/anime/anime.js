@@ -115,7 +115,7 @@ const Anime = async ({ slug }) => {
             genres.push({
               name: genreName,
               slug: genreSlug,
-              url_main: genreUrl,
+              url_example: genreUrl,
             });
           });
         Anime.data.genres = genres;
@@ -146,7 +146,7 @@ const Anime = async ({ slug }) => {
               name: episodeName,
               slug: episodeSlug,
               upload_date: episodeDate,
-              url_main: episodeUrl,
+              url_example: episodeUrl,
             });
           });
 
@@ -160,7 +160,7 @@ const Anime = async ({ slug }) => {
             title: recTitle,
             slug: recSlug,
             poster: recPoster,
-            url_main: recUrl,
+            url_example: recUrl,
           });
         });
       });

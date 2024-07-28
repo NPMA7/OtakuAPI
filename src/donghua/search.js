@@ -34,7 +34,7 @@ const searchDonghua = async ({ keyword, page }) => {
         const poster = $(this).find("div.limit img").prop("data-src").trim();
         const type = $(this).find("div.limit div.typez").text().trim();
         const status = $(this).find("div.limit div.bt span.epx").text().trim();
-        const url_main = $(this).attr("href");
+        const url_example = $(this).attr("href");
 
         searchDonghua.data.push({
           title,
@@ -42,7 +42,7 @@ const searchDonghua = async ({ keyword, page }) => {
           poster,
           type,
           status,
-          url_main,
+          url_example,
         });
       });
 

@@ -17,7 +17,7 @@ const episodeAnime = async ({ slug }) => {
         anime: {
           title: "",
           slug: "",
-          url_main: "",
+          url_example: "",
           genres: [],
           duration: "",
           type: "",
@@ -78,7 +78,7 @@ const episodeAnime = async ({ slug }) => {
           .attr("href")
           .replace(`${ANIME_BASEURL}/episode/`, "")
           .replace("/", "");
-        const url_main = $(this).find("div.venutama div.flir a").attr("href");
+        const url_example = $(this).find("div.venutama div.flir a").attr("href");
         const duration = $(this)
           .find("div.infozin div.infozingle p span:contains(Duration)")
           .text()
@@ -92,7 +92,7 @@ const episodeAnime = async ({ slug }) => {
 
         episodeAnime.data.anime.title = title;
         episodeAnime.data.anime.slug = slug;
-        episodeAnime.data.anime.url_main = url_main;
+        episodeAnime.data.anime.url_example = url_example;
         episodeAnime.data.anime.duration = duration;
         episodeAnime.data.anime.type = type;
         episodeAnime.data.episode = episode;
@@ -117,7 +117,7 @@ const episodeAnime = async ({ slug }) => {
           episodeAnime.data.episodes_list.push({
             episode: episodeTitle,
             slug: episodeSlug,
-            url_main: episodeUrlMain,
+            url_example: episodeUrlMain,
           });
         });
 
@@ -127,11 +127,11 @@ const episodeAnime = async ({ slug }) => {
             .attr("href")
             ?.replace(`${ANIME_BASEURL}/genres/`, "")
             .replace("/", "");
-          const url_main = $(this).attr("href");
+          const url_example = $(this).attr("href");
           episodeAnime.data.anime.genres.push({
             name,
             slug,
-            url_main,
+            url_example,
           });
         });
 

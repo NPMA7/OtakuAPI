@@ -28,7 +28,26 @@ router.post('/set-api-key', (req, res) => {
 });
 
 router.get('/v1', validateApiKey, (req, res) => {
-  res.send({ status: 'OK', message: 'This scraper API is currently under development.' });
+  res.send({ status: 'OK', 
+    message: ['This scraper API is currently under development.',
+              'please input the ready endpoint'
+    ],
+    endpoint: [
+      "anime   : /anime",
+      "donghua : /donghua"
+      ],
+   });
+});
+router.get('/images/:link', (req, res) => {
+  const { link } = req.params; // Correctly access the link parameter
+  const filePath = path.join(__dirname, '/public/images', link); // Ensure the path is correct and matches your folder structure
+
+  res.sendFile(filePath, (err) => {
+    if (err) {
+      console.error(`Failed to send file: ${filePath}`, err);
+      res.status(404).send('File not found');
+    }
+  });
 });
 
 router.use(routerDonghua);

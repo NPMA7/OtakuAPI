@@ -38,7 +38,7 @@ const searchAnime = async ({ keyword }) => {
           .text()
           .replace("Rating :", "")
           .trim();
-        const url_main = $(this).find("h2 a").attr("href");
+        const url_example = $(this).find("h2 a").attr("href");
 
         // Collecting genres with their URLs and slugs
         let genres = [];
@@ -65,7 +65,7 @@ const searchAnime = async ({ keyword }) => {
           genres: genres,
           status: status,
           rating: rating,
-          url_main: url_main,
+          url_example: url_example,
         });
       });
     }

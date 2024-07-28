@@ -3,18 +3,27 @@ import cheerio from "cheerio";
 import dotenv from "dotenv";
 dotenv.config();
 
+// Determine the environment
+const isLocal = process.env.NODE_ENV !== 'production'; // Assume 'production' means hosting environment
+
+// Set the server URL based on the environment
+const serverRunningOn = isLocal 
+    ? 'http://localhost:4444' // Your local URL
+    : 'https://otaku-api.vercel.app'; // Your hosting URL
+
 const { ANIME_BASEURL } = process.env;
 
 const homeAnime = async () => {
   try {
-    const Response = await axios.get(`${ANIME_BASEURL}`);
+    const response = await axios.get(`${ANIME_BASEURL}`);
 
     let homeAnime = {
       stats: "Ok",
       data: { ongoing_anime: [], completed_anime: [] },
     };
-    if (Response.status === 200) {
-      const homeHtml = Response.data;
+
+    if (response.status === 200) {
+      const homeHtml = response.data;
       const $ = cheerio.load(homeHtml);
 
       $("div.venutama div.rseries div.rapi:first div.venz ul li").each(
@@ -28,9 +37,17 @@ const homeAnime = async () => {
             .attr("href")
             ?.replace(`${ANIME_BASEURL}/anime/`, "")
             .replace("/", "");
-          const poster = $(this)
+
+          const originalPoster = $(this)
             .find("div.detpost div.thumb div.thumbz img")
             .attr("src");
+          const poster = isLocal
+            ? originalPoster.replace(
+                "https://otakudesu.cloud/",
+                "https://localhost:4444/"
+              )
+            : originalPoster;
+
           const current_episode = $(this)
             .find("div.detpost div.epz")
             .text()
@@ -43,18 +60,23 @@ const homeAnime = async () => {
             .find("div.detpost div.newnime")
             .text()
             .trim();
-          const url_main = $(this).find("div.detpost div.thumb a").attr("href");
+          const url_example = $(this)
+            .find("div.detpost div.thumb a")
+            .attr("href")
+            ?.replace(`${ANIME_BASEURL}`, `${serverRunningOn}`);
+
           homeAnime.data.ongoing_anime.push({
             title,
             slug,
-            poster,
+            poster, // Use the environment-dependent poster URL
             current_episode,
             day_release,
             date_release,
-            url_main,
+            url_example,
           });
         }
       );
+
       $("div.venutama div.rseries div.rapi:last div.venz ul li").each(
         function () {
           const title = $(this)
@@ -66,9 +88,17 @@ const homeAnime = async () => {
             .attr("href")
             ?.replace(`${ANIME_BASEURL}/anime/`, "")
             .replace("/", "");
-          const poster = $(this)
+
+          const originalPoster = $(this)
             .find("div.detpost div.thumb div.thumbz img")
             .attr("src");
+          const poster = isLocal
+            ? originalPoster.replace(
+                "https://otakudesu.cloud/",
+                "https://localhost:4444/"
+              )
+            : originalPoster;
+
           const current_episode = $(this)
             .find("div.detpost div.epz")
             .text()
@@ -81,19 +111,24 @@ const homeAnime = async () => {
             .find("div.detpost div.newnime")
             .text()
             .trim();
-          const url_main = $(this).find("div.detpost div.thumb a").attr("href");
+          const url_example = $(this)
+            .find("div.detpost div.thumb a")
+            .attr("href");
+
           homeAnime.data.completed_anime.push({
             title,
             slug,
-            poster,
+            poster, // Use the environment-dependent poster URL
             current_episode,
             day_release,
             date_release,
-            url_main,
+            url_example,
           });
+
         }
       );
     }
+
     console.log("Fetching Success");
     return homeAnime;
   } catch (error) {

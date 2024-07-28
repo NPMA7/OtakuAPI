@@ -41,7 +41,7 @@ const mapGenresAnime = async ({ slug, page }) => {
         const season = $(this).find("div.col-anime-date").text().trim();
         const studio = $(this).find("div.col-anime-studio").text().trim();
         const synopsis = $(this).find("div.col-synopsis").text().trim();
-        const url_main = $(this).find("div.col-anime-trailer a").attr("href");
+        const url_example = $(this).find("div.col-anime-trailer a").attr("href");
 
         const genres = [];
         $(this).find("div.col-anime-genre a").each(function () {
@@ -69,7 +69,7 @@ const mapGenresAnime = async ({ slug, page }) => {
           studio,
           synopsis,
           genres,
-          url_main,
+          url_example,
         });
       });
 
