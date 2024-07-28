@@ -7,28 +7,13 @@ import cookieParser from 'cookie-parser';
 import routerAnime from './routesAnime.js';
 
 const router = express.Router();
+const __dirname = path.resolve();
 
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(cookieParser());
-const __dirname = path.resolve();
-const imagesDir = path.join("/tmp", "images");
 
-if (!fs.existsSync(imagesDir)) {
-  fs.mkdirSync(imagesDir, { recursive: true });
-}
 router.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '/view/index.html')); 
-});
-
-router.get("/images/anime/:filename", validateApiKey, (req, res) => {
-  const filename = req.params.filename;
-  const filepath = path.join(imagesDir, filename);
-
-  if (fs.existsSync(filepath)) {
-    res.sendFile(filepath, { root: '/' });
-  } else {
-    res.status(404).send({ error: "Image not found" });
-  }
 });
 
 router.post('/set-api-key', (req, res) => {
