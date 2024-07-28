@@ -12,7 +12,7 @@ router.use(cookieParser());
 const __dirname = path.resolve();
 
 router.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '/public/index.html')); 
+  res.sendFile(path.join(__dirname, '/view/index.html')); 
 });
 
 router.post('/set-api-key', (req, res) => {
