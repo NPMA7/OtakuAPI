@@ -26,7 +26,7 @@ const validateApiKey = (req, res, next) => {
   }
 
   // Cek jika URL mengarah ke halaman input API key
-  if (req.path === '/' || req.path === '/invalid') {
+  if (req.path === '/' || req.path === '/set-api-key') {
     return next();
   }
 

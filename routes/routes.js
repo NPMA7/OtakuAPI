@@ -31,7 +31,7 @@ router.get("/images/anime/:filename", (req, res) => {
   }
 });
 
-router.post('/invalid', (req, res) => {
+router.post('/set-api-key', (req, res) => {
   const { apiKey } = req.body;
 
   if (apiKey === process.env.API_KEY) {
