@@ -37,7 +37,7 @@ routerAnime.get("/v1/anime/ongoing/:page?", async (req, res) => {
 // Cron Job Endpoint
 routerAnime.get("/v1/anime/cron-job", async (req, res) => {
   try {
-    await checkOngoingAnime(1); // Check for ongoing anime and download new posters
+    await ongoingAnime(1); // Check for ongoing anime and download new posters
     res.send({ status: "OK", message: "Anime check completed successfully." });
   } catch (error) {
     console.error("Error in cron job:", error);
