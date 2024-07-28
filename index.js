@@ -3,35 +3,39 @@ import cors from "cors";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
-import fs from "fs"; // Import fs module
-import path from "path"; // Import path module
+import fs from "fs";
+import path from "path";
 import router from "./routes/routes.js";
 import validateApiKey from "./middleware/validateApiKey.js";
 
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 4444; // Use dynamic port for hosting environments
+const port = process.env.PORT || 4444;
 
-app.use(cors());
+// Configure CORS to allow all origins
+const corsOptions = {
+  origin: '*', // Allow all origins
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'], // Adjust as necessary
+  credentials: true // Allow cookies if needed
+};
+
+app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(validateApiKey);
 
-// Define images directory path for temporary storage
 const imagesDir = path.join("/tmp", "images");
 
-// Ensure the images directory exists
 if (!fs.existsSync(imagesDir)) {
   fs.mkdirSync(imagesDir, { recursive: true });
 }
 
-// Endpoint to serve images
 app.get("/images/anime/:filename", (req, res) => {
   const filename = req.params.filename;
   const filepath = path.join(imagesDir, filename);
 
-  // Check if the image exists
   if (fs.existsSync(filepath)) {
     res.sendFile(filepath, { root: '/' });
   } else {
