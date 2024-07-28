@@ -6,18 +6,17 @@ import path from "path";
 dotenv.config();
 
 // Determine the environment
-const isLocal = process.env.NODE_ENV !== 'production'; // Assume 'production' means hosting environment
+const isLocal = process.env.NODE_ENV !== "production"; // Assume 'production' means hosting environment
 
 // Set the server URL based on the environment
-const serverRunningOn = isLocal 
-    ? 'http://localhost:4444' // Your local URL
-    : 'https://otaku-api.vercel.app'; // Your hosting URL
+const serverRunningOn = isLocal
+  ? "http://localhost:4444" // Your local URL
+  : "https://otaku-api.vercel.app"; // Your hosting URL
 
 const { ANIME_BASEURL } = process.env;
 
-// Define the directory to save images
-const __dirname = path.resolve();
-const imagesDir = path.join(__dirname, '/public/images');
+// Define the directory to save images (using Vercel's temporary directory)
+const imagesDir = path.join("/tmp", "images");
 
 // Ensure the images directory exists
 if (!fs.existsSync(imagesDir)) {
@@ -26,19 +25,24 @@ if (!fs.existsSync(imagesDir)) {
 
 // Function to download an image and save it locally
 const downloadImage = async (url, filepath) => {
-  const writer = fs.createWriteStream(filepath);
-  const response = await axios({
-    url,
-    method: 'GET',
-    responseType: 'stream',
-  });
+  try {
+    const writer = fs.createWriteStream(filepath);
+    const response = await axios({
+      url,
+      method: "GET",
+      responseType: "stream",
+    });
 
-  response.data.pipe(writer);
+    response.data.pipe(writer);
 
-  return new Promise((resolve, reject) => {
-    writer.on('finish', resolve);
-    writer.on('error', reject);
-  });
+    return new Promise((resolve, reject) => {
+      writer.on("finish", resolve);
+      writer.on("error", reject);
+    });
+  } catch (error) {
+    console.error(`Failed to download image from ${url}:`, error);
+    throw error;
+  }
 };
 
 const ongoingAnime = async ({ page }) => {
@@ -57,8 +61,8 @@ const ongoingAnime = async ({ page }) => {
       const ongoingHtml = response.data;
       const $ = Cheerio.load(ongoingHtml);
 
-      const promises = $("div.venutama div.rseries div.rapi:first div.venz ul li").map(
-        async function () {
+      const promises = $("div.venutama div.rseries div.rapi:first div.venz ul li")
+        .map(async function () {
           const title = $(this)
             .find("div.detpost div.thumb div.thumbz h2")
             .text()
@@ -75,7 +79,7 @@ const ongoingAnime = async ({ page }) => {
 
           const posterFilename = path.basename(originalPoster);
           const localPosterPath = path.join(imagesDir, posterFilename);
-          
+
           // Download image only if it does not exist
           if (!fs.existsSync(localPosterPath)) {
             await downloadImage(originalPoster, localPosterPath);
@@ -113,8 +117,8 @@ const ongoingAnime = async ({ page }) => {
             date_release,
             url_example,
           });
-        }
-      ).get(); // Convert jQuery object to array for promises
+        })
+        .get(); // Convert jQuery object to array for promises
 
       await Promise.all(promises);
 
