@@ -1,26 +1,19 @@
+// src/anime/ongoing.js
 import axios from "axios";
 import Cheerio from "cheerio";
-import dotenv from "dotenv";
 import fs from "fs";
 import path from "path";
-dotenv.config();
 
-// Determine the environment
-const isLocal = process.env.NODE_ENV !== "production"; // Assume 'production' means hosting environment
-
-// Set the server URL based on the environment
-const serverRunningOn = isLocal
-  ? "http://localhost:4444" // Your local URL
-  : "https://otaku-api.vercel.app"; // Your hosting URL
-
+const isLocal = process.env.NODE_ENV !== 'production'; // Assume 'production' means hosting environment
+const serverRunningOn = isLocal ? 'http://localhost:4444' : 'https://otaku-api.vercel.app';
 const { ANIME_BASEURL } = process.env;
 
-// Define the directory to save images (using Vercel's temporary directory)
-const imagesDir = path.join("/tmp", "images");
+const imagesDir = path.join(process.cwd(), "tmp", "images");
 
 // Ensure the images directory exists
 if (!fs.existsSync(imagesDir)) {
   fs.mkdirSync(imagesDir, { recursive: true });
+  console.log(`Created directory: ${imagesDir}`);
 }
 
 // Function to download an image and save it locally
@@ -40,16 +33,14 @@ const downloadImage = async (url, filepath) => {
       writer.on("error", reject);
     });
   } catch (error) {
-    console.error(`Failed to download image from ${url}:`, error);
+    console.error(`Error downloading image from ${url}:`, error);
     throw error;
   }
 };
 
 const ongoingAnime = async ({ page }) => {
   try {
-    const response = await axios.get(
-      `${ANIME_BASEURL}/ongoing-anime/page/${page}`
-    );
+    const response = await axios.get(`${ANIME_BASEURL}/ongoing-anime/page/${page}`);
 
     let ongoingAnime = {
       status: "Ok",
@@ -63,62 +54,50 @@ const ongoingAnime = async ({ page }) => {
 
       const promises = $("div.venutama div.rseries div.rapi:first div.venz ul li")
         .map(async function () {
-          const title = $(this)
-            .find("div.detpost div.thumb div.thumbz h2")
-            .text()
-            .trim();
+          const title = $(this).find("div.detpost div.thumb div.thumbz h2").text().trim();
           const slug = $(this)
             .find("div.detpost div.thumb a")
             .attr("href")
             ?.replace(`${ANIME_BASEURL}/anime/`, "")
             .replace("/", "");
 
-          const originalPoster = $(this)
-            .find("div.detpost div.thumb div.thumbz img")
-            .attr("src");
+          const originalPoster = $(this).find("div.detpost div.thumb div.thumbz img").attr("src");
 
-          const posterFilename = path.basename(originalPoster);
-          const localPosterPath = path.join(imagesDir, posterFilename);
+          if (originalPoster) {
+            const posterFilename = path.basename(originalPoster);
+            const localPosterPath = path.join(imagesDir, posterFilename);
 
-          // Download image only if it does not exist
-          if (!fs.existsSync(localPosterPath)) {
-            await downloadImage(originalPoster, localPosterPath);
+            // Download image only if it does not exist
+            if (!fs.existsSync(localPosterPath)) {
+              console.log(`Downloading image: ${originalPoster} to ${localPosterPath}`);
+              await downloadImage(originalPoster, localPosterPath);
+            } else {
+              console.log(`Image already exists: ${localPosterPath}`);
+            }
+
+            const posterUrl = `${serverRunningOn}/images/${posterFilename}`;
+
+            const current_episode = $(this).find("div.detpost div.epz").text().trim();
+            const day_release = $(this).find("div.detpost div.epztipe").text().trim();
+            const date_release = $(this).find("div.detpost div.newnime").text().trim();
+
+            const originalUrlExample = $(this).find("div.detpost div.thumb a").attr("href");
+            const url_example = originalUrlExample.replace(`${ANIME_BASEURL}`, `${serverRunningOn}`);
+
+            ongoingAnime.data.push({
+              title,
+              slug,
+              poster: posterUrl,
+              current_episode,
+              day_release,
+              date_release,
+              url_example,
+            });
+          } else {
+            console.warn(`No poster found for anime: ${title}`);
           }
-
-          const posterUrl = `${serverRunningOn}/images/${posterFilename}`;
-
-          const current_episode = $(this)
-            .find("div.detpost div.epz")
-            .text()
-            .trim();
-          const day_release = $(this)
-            .find("div.detpost div.epztipe")
-            .text()
-            .trim();
-          const date_release = $(this)
-            .find("div.detpost div.newnime")
-            .text()
-            .trim();
-
-          const originalUrlExample = $(this)
-            .find("div.detpost div.thumb a")
-            .attr("href");
-          const url_example = originalUrlExample.replace(
-            `${ANIME_BASEURL}`,
-            `${serverRunningOn}`
-          );
-
-          ongoingAnime.data.push({
-            title,
-            slug,
-            poster: posterUrl,
-            current_episode,
-            day_release,
-            date_release,
-            url_example,
-          });
         })
-        .get(); // Convert jQuery object to array for promises
+        .get();
 
       await Promise.all(promises);
 
@@ -152,5 +131,3 @@ const ongoingAnime = async ({ page }) => {
 };
 
 export default ongoingAnime;
-
-

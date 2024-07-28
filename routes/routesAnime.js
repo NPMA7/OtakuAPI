@@ -1,10 +1,19 @@
 import express from "express";
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 import ongoingAnime from "../src/anime/ongoing.js";
 
 dotenv.config();
 
 const routerAnime = express.Router();
+
+const isLocal = process.env.NODE_ENV !== "production";
+
+// Set the server URL based on the environment
+const serverRunningOn = isLocal
+  ? "http://localhost:4444"
+  : "https://otaku-api.vercel.app";
+
+const { ANIME_BASEURL } = process.env;
 
 routerAnime.get("/v1/anime", (req, res) =>
   res.send({
@@ -37,7 +46,7 @@ routerAnime.get("/v1/anime/ongoing/:page?", async (req, res) => {
 // Cron Job Endpoint
 routerAnime.get("/v1/anime/cron-job", async (req, res) => {
   try {
-    await ongoingAnime({ page: 1 });
+    await ongoingAnime({ page: 1, serverRunningOn, ANIME_BASEURL });
     res.send({ status: "OK", message: "Anime check completed successfully." });
   } catch (error) {
     console.error("Error in cron job:", error);
