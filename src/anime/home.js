@@ -3,10 +3,6 @@ import cheerio from "cheerio";
 import dotenv from "dotenv";
 dotenv.config();
 
-const serverRunningOn = isLocal
-  ? "http://localhost:4444"
-  : "https://otaku-api.vercel.app";
-
 const { ANIME_BASEURL } = process.env;
 
 const homeAnime = async () => {
