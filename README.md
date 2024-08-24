@@ -125,11 +125,6 @@ OtakuAPI is API for otaku, with lots of API, like anime, Donghua films etc.
 $ git clone hhttps://github.com/NPMA7/OtakuAPI.git.
 ```
 
-- Then cd into the project root directory 
-```bash
-$ cd OtakuAPI
-```
-
 - Inside the project root directory, run this command to install all the dependencies
 ```bash
 $ npm install

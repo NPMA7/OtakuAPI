@@ -1,19 +1,13 @@
 import express from "express";
-import dotenv from "dotenv";
+import homeAnime from "../src/anime/home.js";
 import ongoingAnime from "../src/anime/ongoing.js";
-
-dotenv.config();
-
+import completedAnime from "../src/anime/completed.js";
+import searchAnime from "../src/anime/search.js";
+import Anime from "../src/anime/anime.js";
+import genresAnime from "../src/anime/genres.js";
+import mapGenresAnime from "../src/anime/mapGenres.js";
+import episodeAnime from "../src/anime/episode.js";
 const routerAnime = express.Router();
-
-const isLocal = process.env.NODE_ENV !== "production";
-
-// Set the server URL based on the environment
-const serverRunningOn = isLocal
-  ? "http://localhost:4444"
-  : "https://otaku-api.vercel.app";
-
-const { ANIME_BASEURL } = process.env;
 
 routerAnime.get("/v1/anime", (req, res) =>
   res.send({
@@ -31,6 +25,15 @@ routerAnime.get("/v1/anime", (req, res) =>
     ],
   })
 );
+routerAnime.get("/v1/anime/home", async (req, res) => {
+  try {
+    const data = await homeAnime();
+    res.send(data);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    res.send({ error: "Failed to fetch data" });
+  }
+});
 
 routerAnime.get("/v1/anime/ongoing/:page?", async (req, res) => {
   const { page = 1 } = req.params;
@@ -43,14 +46,63 @@ routerAnime.get("/v1/anime/ongoing/:page?", async (req, res) => {
   }
 });
 
-// Cron Job Endpoint
-routerAnime.get("/v1/anime/cron-job", async (req, res) => {
+routerAnime.get("/v1/anime/complete/:page?", async (req, res) => {
+  const { page = 1 } = req.params;
   try {
-    await ongoingAnime({ page: 1, serverRunningOn, ANIME_BASEURL });
-    res.send({ status: "OK", message: "Anime check completed successfully." });
+    const data = await completedAnime({ page });
+    res.send(data);
   } catch (error) {
-    console.error("Error in cron job:", error);
-    res.status(500).send({ error: "Failed to complete cron job task." });
+    console.error("Error fetching data:", error);
+    res.send({ error: "Failed to fetch data" });
+  }
+});
+routerAnime.get("/v1/anime/search/:keyword", async (req, res) => {
+  const { keyword } = req.params;
+  try {
+    const data = await searchAnime({ keyword });
+    res.send(data);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    res.send({ error: "Failed to fetch data" });
+  }
+});
+routerAnime.get("/v1/anime/slug/:slug", async (req, res) => {
+  const { slug } = req.params;
+  try {
+    const data = await Anime({ slug });
+    res.send(data);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    res.send({ error: "Failed to fetch data" });
+  }
+});
+routerAnime.get("/v1/anime/episode/:slug", async (req, res) => {
+  const { slug } = req.params;
+  try {
+    const data = await episodeAnime({ slug });
+    res.send(data);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    res.send({ error: "Failed to fetch data" });
+  }
+});
+routerAnime.get("/v1/anime/genres", async (req, res) => {
+  try {
+    const data = await genresAnime();
+    res.send(data);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    res.send({ error: "Failed to fetch data" });
+  }
+});
+routerAnime.get("/v1/anime/genres/:slug/:page?", async (req, res) => {
+  const { slug, page = 1} = req.params;
+  try {
+    const data = await mapGenresAnime({ slug, page });
+    res.send(data);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    res.send({ error: "Failed to fetch data" });
   }
 });
 
