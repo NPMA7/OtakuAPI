@@ -17,7 +17,7 @@ const episodeAnime = async ({ slug }) => {
         anime: {
           title: "",
           slug: "",
-          url_main: "",
+          url: "",
           genres: [],
           duration: "",
           type: "",
@@ -74,11 +74,18 @@ const episodeAnime = async ({ slug }) => {
           .trim()
           .replace("Info ", "");
         const slug = $(this)
-          .find("div.venutama div.flir a")
+          .find("div.venutama div.flir a[rel='follow']")
           .attr("href")
-          .replace(`${ANIME_BASEURL}/episode/`, "")
-          .replace("/", "");
-        const url_main = $(this).find("div.venutama div.flir a").attr("href");
+          ?.replace(`${ANIME_BASEURL}/anime/`, "");
+        const url = $(this)
+          .find("div.venutama div.flir a[rel='follow']")
+          .attr("href")
+          ?.replace(
+            `${ANIME_BASEURL}/anime/`,
+            ANIME_BASEURL.includes("localhost")
+              ? "https://otaku-api.vercel.app/v1/anime/slug/"
+              : "http://localhost:4444/v1/anime/slug/"
+          );
         const duration = $(this)
           .find("div.infozin div.infozingle p span:contains(Duration)")
           .text()
@@ -92,7 +99,7 @@ const episodeAnime = async ({ slug }) => {
 
         episodeAnime.data.anime.title = title;
         episodeAnime.data.anime.slug = slug;
-        episodeAnime.data.anime.url_main = url_main;
+        episodeAnime.data.anime.url = url;
         episodeAnime.data.anime.duration = duration;
         episodeAnime.data.anime.type = type;
         episodeAnime.data.episode = episode;
@@ -113,11 +120,16 @@ const episodeAnime = async ({ slug }) => {
                 .replace(`${ANIME_BASEURL}/episode/`, "")
                 .replace("/", "")
             : null;
-          const episodeUrlMain = episodeSlugAttr;
+          const episodeUrlMain = episodeSlugAttr    ?.replace(
+            `${ANIME_BASEURL}/`,
+            ANIME_BASEURL.includes("localhost")
+              ? "https://otaku-api.vercel.app/v1/anime/"
+              : "http://localhost:4444/v1/anime/"
+          );;
           episodeAnime.data.episodes_list.push({
             episode: episodeTitle,
             slug: episodeSlug,
-            url_main: episodeUrlMain,
+            url: episodeUrlMain,
           });
         });
 
@@ -127,11 +139,16 @@ const episodeAnime = async ({ slug }) => {
             .attr("href")
             ?.replace(`${ANIME_BASEURL}/genres/`, "")
             .replace("/", "");
-          const url_main = $(this).attr("href");
+          const url = $(this).attr("href")    ?.replace(
+            `${ANIME_BASEURL}/`,
+            ANIME_BASEURL.includes("localhost")
+              ? "https://otaku-api.vercel.app/v1/anime/"
+              : "http://localhost:4444/v1/anime/"
+          );
           episodeAnime.data.anime.genres.push({
             name,
             slug,
-            url_main,
+            url,
           });
         });
 

@@ -3,7 +3,7 @@ import homeAnime from "../src/anime/home.js";
 import ongoingAnime from "../src/anime/ongoing.js";
 import completedAnime from "../src/anime/completed.js";
 import searchAnime from "../src/anime/search.js";
-import Anime from "../src/anime/anime.js";
+import Anime from "../src/anime/slug.js";
 import genresAnime from "../src/anime/genres.js";
 import mapGenresAnime from "../src/anime/mapGenres.js";
 import episodeAnime from "../src/anime/episode.js";

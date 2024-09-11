@@ -38,7 +38,10 @@ const searchAnime = async ({ keyword }) => {
           .text()
           .replace("Rating :", "")
           .trim();
-        const url_main = $(this).find("h2 a").attr("href");
+        const url = $(this).find("h2 a").attr("href")    ?.replace(
+          `${ANIME_BASEURL}/anime/`,
+          ANIME_BASEURL.includes("localhost") ? "https://otaku-api.vercel.app/v1/anime/slug/" : "http://localhost:4444/v1/anime/slug/"
+        );
 
         // Collecting genres with their URLs and slugs
         let genres = [];
@@ -50,7 +53,10 @@ const searchAnime = async ({ keyword }) => {
               .attr("href")
               ?.replace(`${ANIME_BASEURL}/genres/`, "")
               .replace("/", "");
-            const genreUrl = $(this).attr("href");
+            const genreUrl = $(this).attr("href")    ?.replace(
+              `${ANIME_BASEURL}/`,
+              ANIME_BASEURL.includes("localhost") ? "https://otaku-api.vercel.app/v1/anime/" : "http://localhost:4444/v1/anime/"
+            );
             genres.push({
               name: genreName,
               slug: genreSlug,
@@ -65,7 +71,7 @@ const searchAnime = async ({ keyword }) => {
           genres: genres,
           status: status,
           rating: rating,
-          url_main: url_main,
+          url: url,
         });
       });
     }

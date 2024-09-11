@@ -41,7 +41,13 @@ const mapGenresAnime = async ({ slug, page }) => {
         const season = $(this).find("div.col-anime-date").text().trim();
         const studio = $(this).find("div.col-anime-studio").text().trim();
         const synopsis = $(this).find("div.col-synopsis").text().trim();
-        const url_main = $(this).find("div.col-anime-trailer a").attr("href");
+        const url = $(this).find("div.col-anime-trailer a").attr("href")
+        ?.replace(
+          `${ANIME_BASEURL}/anime/`,
+          ANIME_BASEURL.includes("localhost")
+            ? "https://otaku-api.vercel.app/v1/anime/slug/"
+            : "http://localhost:4444/v1/anime/slug/"
+        );
 
         const genres = [];
         $(this).find("div.col-anime-genre a").each(function () {
@@ -50,7 +56,13 @@ const mapGenresAnime = async ({ slug, page }) => {
             .attr("href")
             ?.replace(`${ANIME_BASEURL}/genres/`, "")
             .replace("/", "");
-          const genresUrl = $(this).attr("href");
+          const genresUrl = $(this).attr("href")
+          ?.replace(
+            `${ANIME_BASEURL}/`,
+            ANIME_BASEURL.includes("localhost")
+              ? "https://otaku-api.vercel.app/v1/anime/"
+              : "http://localhost:4444/v1/anime/"
+          );
 
           genres.push({
             name: genresName,
@@ -69,7 +81,7 @@ const mapGenresAnime = async ({ slug, page }) => {
           studio,
           synopsis,
           genres,
-          url_main,
+          url,
         });
       });
 

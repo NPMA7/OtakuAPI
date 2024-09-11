@@ -21,12 +21,13 @@ const genresAnime = async () => {
           .attr("href")
           ?.replace(`/genres/`, "")
           .replace("/", "");
-        const url_main = $(this).attr("href");
+        const url = $(this)
+          .attr("href");
 
         genresAnime.data.push({
           name,
           slug,
-          url_main,
+          url,
         });
       });
     }

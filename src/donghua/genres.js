@@ -22,12 +22,12 @@ const genresDonghua = async () => {
           .attr("href")
           ?.replace(`${DONGHUA_BASEURL}/genres/`, "")
           .replace("/", "");
-        const url_main = $(this).find("a").attr("href");
+        const url = $(this).find("a").attr("href");
 
         genresDonghua.data.push({
           name,
           slug,
-          url_main,
+          url,
         });
       });
     }

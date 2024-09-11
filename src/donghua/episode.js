@@ -18,7 +18,7 @@ const episodeDonghua = async ({ slug }) => {
         donghua: {
           title: "",
           slug: "",
-          url_main: "",
+          url: "",
           rating: "",
           status: "",
           studio: "",
@@ -89,10 +89,10 @@ const episodeDonghua = async ({ slug }) => {
         const slug = slugAttr
           ? slugAttr.replace(`${DONGHUA_BASEURL}/anime/`, "")
           : null;
-        const url_main = slugAttr;
+        const url = slugAttr;
         episodeDonghua.data.donghua.title = title;
         episodeDonghua.data.donghua.slug = slug;
-        episodeDonghua.data.donghua.url_main = url_main;
+        episodeDonghua.data.donghua.url = url;
       });
 
       $("div.postbody div.single-info div.infox").each(function () {
@@ -160,12 +160,12 @@ const episodeDonghua = async ({ slug }) => {
             .attr("href")
             ?.replace(`${DONGHUA_BASEURL}/genres/`, "")
             .replace("/", "");
-          const url_main = $(this).attr("href");
+          const url = $(this).attr("href");
 
           episodeDonghua.data.donghua.genres.push({
             name,
             slug,
-            url_main,
+            url,
           });
         }
       );
@@ -181,7 +181,7 @@ const episodeDonghua = async ({ slug }) => {
         episodeDonghua.data.episodes_list.push({
           episode: episodeTitle,
           slug: episodeSlug,
-          url_main: episodeUrlMain,
+          url: episodeUrlMain,
         });
       });
 
@@ -196,14 +196,14 @@ const episodeDonghua = async ({ slug }) => {
           : null;
         const poster = $(this).find("div.limit img").prop("data-src");
         const type = $(this).find("div.limit div.typez").text().trim();
-        const url_main = $(this).attr("href");
+        const url = $(this).attr("href");
 
         episodeDonghua.data.recommendations.push({
           title,
           slug,
           poster,
           type,
-          url_main,
+          url,
         });
       });
     }

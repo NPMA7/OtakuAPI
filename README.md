@@ -25,10 +25,10 @@ OtakuAPI is API for otaku, with lots of API, like anime, Donghua films etc.
   "status": "Ok",
   "data": {
     "episode": "Heavenly Brick Knight Episode 3 Indonesia, English Sub",
-    "stream_url": "//ok.ru/videoembed/7659681679924",
+    "stream_url": "",
     "download_url": {
-      "download_url_id": "https://sfl.gl/eD0RX2z",
-      "download_url_en": "https://sfl.gl/uck9uB2g"
+      "download_url_id": "",
+      "download_url_en": ""
     },
     "donghua": {
       "title": "Heavenly Brick Knight",
@@ -85,31 +85,7 @@ OtakuAPI is API for otaku, with lots of API, like anime, Donghua films etc.
       {
         "title": "Tales of Demons and Gods Season 8",
         "slug": "animetales-of-demons-and-gods-season-8/",
-        "poster": "https://anichin.co.id/wp-content/uploads/2024/05/Tales-of-Demons-and-Gods-Season-8.webp",
-        "type": "ONA",
-      },
-      {
-        "title": "Perfect World",
-        "slug": "animeperfect-world/",
-        "poster": "https://anichin.co.id/wp-content/uploads/2023/11/1699024858-6744-137928.webp",
-        "type": "ONA",
-      }
-      {
-        "title": "Dragon Prince Yuan",
-        "slug": "animedragon-prince-yuan/",
-        "poster": "https://anichin.co.id/wp-content/uploads/2024/06/Wu-768x1366-1.webp",
-        "type": "ONA",
-      },
-      {
-        "title": "Xi Xing Ji Special: Asura (Mad King)",
-        "slug": "animexi-xing-ji-special-asura-mad-king/",
-        "poster": "https://anichin.co.id/wp-content/uploads/2024/03/Xi-Xing-Ji-Mad-King.jpg",
-        "type": "ONA",
-      },
-      {
-        "title": "Swallowed Star 4th Season",
-        "slug": "animeswallowed-star-4th-season/",
-        "poster": "https://anichin.co.id/wp-content/uploads/2023/10/1696314083-4736-138218.webp",
+        "poster": "",
         "type": "ONA",
       }
     ]
@@ -123,6 +99,11 @@ OtakuAPI is API for otaku, with lots of API, like anime, Donghua films etc.
 - Open up your terminal, then run this command to clone this repo
 ```bash
 $ git clone hhttps://github.com/NPMA7/OtakuAPI.git.
+```
+
+- Then cd into the project root directory 
+```bash
+$ cd OtakuAPI
 ```
 
 - Inside the project root directory, run this command to install all the dependencies

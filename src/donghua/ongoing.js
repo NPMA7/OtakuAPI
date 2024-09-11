@@ -36,14 +36,14 @@ const ongoingDonghua = async ({ page }) => {
           : null;
         const poster = $(this).find("img").prop("data-src");
         const status = $(this).find("div.bt span.epx").text().trim();
-        const url_main = slugAttr;
+        const url = slugAttr;
 
         ongoingDonghua.data.ongoing_donghua.push({
           title,
           slug,
           poster,
           status,
-          url_main,
+          url,
         });
       });
 

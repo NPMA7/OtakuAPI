@@ -128,12 +128,12 @@ const Donghua = async ({ slug }) => {
             .attr("href")
             ?.replace(`${DONGHUA_BASEURL}/genres/`, "")
             .replace("/", "");
-          const url_main = $(this).attr("href");
+          const url = $(this).attr("href");
 
           Donghua.data.genres.push({
             name,
             slug,
-            url_main,
+            url,
           });
         }
       );
@@ -145,11 +145,11 @@ const Donghua = async ({ slug }) => {
           .attr("href")
           ?.replace(`${DONGHUA_BASEURL}`, "")
           .replace("/", "");
-        const url_main = $(this).find("a").attr("href");
+        const url = $(this).find("a").attr("href");
         Donghua.data.episodes_list.push({
           episode,
           slug,
-          url_main,
+          url,
         });
       });
       $("div.postbody div.bixbox div.listupd div.bsx a").each(function () {
@@ -160,14 +160,14 @@ const Donghua = async ({ slug }) => {
           .replace("/", "");
         const poster = $(this).find("div.limit img").prop("data-src");
         const type = $(this).find("div.limit div.typez").text().trim();
-        const url_main = $(this).attr("href");
+        const url = $(this).attr("href");
 
         Donghua.data.recommendations.push({
           title,
           slug,
           poster,
           type,
-          url_main,
+          url,
         });
       });
     }

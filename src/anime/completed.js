@@ -47,7 +47,10 @@ const completedAnime = async ({ page }) => {
             .find("div.detpost div.newnime")
             .text()
             .trim();
-          const url_main = $(this).find("div.detpost div.thumb a").attr("href");
+          const url = $(this).find("div.detpost div.thumb a").attr("href")    ?.replace(
+            `${ANIME_BASEURL}/anime/`,
+            ANIME_BASEURL.includes("localhost") ? "https://otaku-api.vercel.app/v1/anime/slug/" : "http://localhost:4444/v1/anime/slug/"
+          );
           completedAnime.data.push({
             title,
             slug,
@@ -55,7 +58,7 @@ const completedAnime = async ({ page }) => {
             current_episode,
             day_release,
             date_release,
-            url_main,
+            url,
           });
           $("div.venutama div.pagination div.pagenavix").each(function () {
             const page = $(this)
