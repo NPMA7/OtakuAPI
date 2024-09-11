@@ -24,7 +24,7 @@ const mapGenresAnime = async ({ slug, page }) => {
     if (genreResponse.status === 200) {
       const genresHtml = genreResponse.data;
       const $ = cheerio.load(genresHtml);
-      
+
       $("div.venser div.page div.col-anime").each(function () {
         const title = $(this).find("div.col-anime-title").text().trim();
         const slug = $(this)
@@ -41,35 +41,36 @@ const mapGenresAnime = async ({ slug, page }) => {
         const season = $(this).find("div.col-anime-date").text().trim();
         const studio = $(this).find("div.col-anime-studio").text().trim();
         const synopsis = $(this).find("div.col-synopsis").text().trim();
-        const url = $(this).find("div.col-anime-trailer a").attr("href")
-        ?.replace(
-          `${ANIME_BASEURL}/anime/`,
-          ANIME_BASEURL.includes("localhost")
-            ? "https://otaku-api.vercel.app/v1/anime/slug/"
-            : "http://localhost:4444/v1/anime/slug/"
-        );
-
-        const genres = [];
-        $(this).find("div.col-anime-genre a").each(function () {
-          const genresName = $(this).text().trim();
-          const genresSlug = $(this)
-            .attr("href")
-            ?.replace(`${ANIME_BASEURL}/genres/`, "")
-            .replace("/", "");
-          const genresUrl = $(this).attr("href")
+        const url = $(this)
+          .find("div.col-anime-trailer a")
+          .attr("href")
           ?.replace(
-            `${ANIME_BASEURL}/`,
-            ANIME_BASEURL.includes("localhost")
-              ? "https://otaku-api.vercel.app/v1/anime/"
-              : "http://localhost:4444/v1/anime/"
+            `${ANIME_BASEURL}/anime/`,
+            "https://otaku-api.vercel.app/v1/anime/slug/"
           );
 
-          genres.push({
-            name: genresName,
-            slug: genresSlug,
-            url: genresUrl,
+        const genres = [];
+        $(this)
+          .find("div.col-anime-genre a")
+          .each(function () {
+            const genresName = $(this).text().trim();
+            const genresSlug = $(this)
+              .attr("href")
+              ?.replace(`${ANIME_BASEURL}/genres/`, "")
+              .replace("/", "");
+            const genresUrl = $(this)
+              .attr("href")
+              ?.replace(
+                `${ANIME_BASEURL}/`,
+                "https://otaku-api.vercel.app/v1/anime/"
+              );
+
+            genres.push({
+              name: genresName,
+              slug: genresSlug,
+              url: genresUrl,
+            });
           });
-        });
 
         mapGenresAnime.data.anime.push({
           title,

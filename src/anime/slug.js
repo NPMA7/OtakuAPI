@@ -111,10 +111,12 @@ const Anime = async ({ slug }) => {
               .attr("href")
               .replace(`${ANIME_BASEURL}/genres/`, "")
               .replace("/", "");
-            const genreUrl = $(this).attr("href")    ?.replace(
-              `${ANIME_BASEURL}`,
-              ANIME_BASEURL.includes("localhost") ? "https://otaku-api.vercel.app/v1/anime" : "http://localhost:4444/v1/anime"
-            );;
+            const genreUrl = $(this)
+              .attr("href")
+              ?.replace(
+                `${ANIME_BASEURL}`,
+                "https://otaku-api.vercel.app/v1/anime"
+              );
             genres.push({
               name: genreName,
               slug: genreSlug,
@@ -122,21 +124,30 @@ const Anime = async ({ slug }) => {
             });
           });
         Anime.data.genres = genres;
-        Anime.data.synopsis = $(this)
-          .find("div.sinopc p")
-          .text()
-          .trim();
+        Anime.data.synopsis = $(this).find("div.sinopc p").text().trim();
 
         // Extract batch information
-        const batchName = $(this).find("div.episodelist:first ul li").first().find("span a").text().trim();
-        const batchUrl = $(this).find("div.episodelist:first ul li").first().find("span a").attr("href")
-        ?.replace(
-          `${ANIME_BASEURL}/`,
-          ANIME_BASEURL.includes("localhost")
-            ? "https://otaku-api.vercel.app/v1/anime/"
-            : "http://localhost:4444/v1/anime/"
-        );
-        const batchDate = $(this).find("div.episodelist:first ul li").first().find("span.zeebr").text().trim();
+        const batchName = $(this)
+          .find("div.episodelist:first ul li")
+          .first()
+          .find("span a")
+          .text()
+          .trim();
+        const batchUrl = $(this)
+          .find("div.episodelist:first ul li")
+          .first()
+          .find("span a")
+          .attr("href")
+          ?.replace(
+            `${ANIME_BASEURL}/`,
+            "https://otaku-api.vercel.app/v1/anime/"
+          );
+        const batchDate = $(this)
+          .find("div.episodelist:first ul li")
+          .first()
+          .find("span.zeebr")
+          .text()
+          .trim();
         Anime.data.batch = {
           name: batchName,
           url: batchUrl,
@@ -148,14 +159,16 @@ const Anime = async ({ slug }) => {
           .find("div.episodelist:not(:first) ul li")
           .each(function () {
             const episodeName = $(this).find("span a").text().trim();
-            const episodeUrl = $(this).find("span a").attr("href")
-            ?.replace(
-              `${ANIME_BASEURL}/`,
-              ANIME_BASEURL.includes("localhost")
-                ? "https://otaku-api.vercel.app/v1/anime/"
-                : "http://localhost:4444/v1/anime/"
-            );;
-            const episodeSlug = episodeUrl.replace(`${ANIME_BASEURL}/episode/`, "").replace("/", "");
+            const episodeUrl = $(this)
+              .find("span a")
+              .attr("href")
+              ?.replace(
+                `${ANIME_BASEURL}/`,
+                "https://otaku-api.vercel.app/v1/anime/"
+              );
+            const episodeSlug = episodeUrl
+              .replace(`${ANIME_BASEURL}/episode/`, "")
+              .replace("/", "");
             const episodeDate = $(this).find("span.zeebr").text().trim();
             Anime.data.episode_list.push({
               name: episodeName,
@@ -166,17 +179,23 @@ const Anime = async ({ slug }) => {
           });
 
         // Extract recommendations
-        $("div#recommend-anime-series div.isi-recommend-anime-series div.isi-konten").each(function () {
+        $(
+          "div#recommend-anime-series div.isi-recommend-anime-series div.isi-konten"
+        ).each(function () {
           const recTitle = $(this).find("span.judul-anime a").text().trim();
-          const recSlug = $(this).find("span.judul-anime a").attr("href").replace(`${ANIME_BASEURL}/anime`, "").replace("/", "");
+          const recSlug = $(this)
+            .find("span.judul-anime a")
+            .attr("href")
+            .replace(`${ANIME_BASEURL}/anime`, "")
+            .replace("/", "");
           const recPoster = $(this).find("a img").attr("src");
-          const recUrl = $(this).find("span.judul-anime a").attr("href")
-          ?.replace(
-            `${ANIME_BASEURL}/anime`,
-            ANIME_BASEURL.includes("localhost")
-              ? "https://otaku-api.vercel.app/v1/anime/slug"
-              : "http://localhost:4444/v1/anime/slug"
-          );;
+          const recUrl = $(this)
+            .find("span.judul-anime a")
+            .attr("href")
+            ?.replace(
+              `${ANIME_BASEURL}/anime`,
+              "https://otaku-api.vercel.app/v1/anime/slug"
+            );
           Anime.data.recommendations.push({
             title: recTitle,
             slug: recSlug,

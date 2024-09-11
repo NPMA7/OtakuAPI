@@ -48,7 +48,7 @@ const homeAnime = async () => {
             .attr("href")
             ?.replace(
               `${ANIME_BASEURL}/anime/`,
-              ANIME_BASEURL.includes("localhost") ? "https://otaku-api.vercel.app/v1/anime/slug/" : "http://localhost:4444/v1/anime/slug/"
+                "https://otaku-api.vercel.app/v1/anime/slug/"
             );
           homeAnime.data.ongoing_anime.push({
             title,
@@ -92,7 +92,7 @@ const homeAnime = async () => {
             .attr("href")
             ?.replace(
               `${ANIME_BASEURL}/anime/`,
-              ANIME_BASEURL.includes("localhost") ? "https://otaku-api.vercel.app/v1/anime/slug/" : "http://localhost:4444/v1/anime/slug/"
+               "https://otaku-api.vercel.app/v1/anime/slug/"
             );
 
           homeAnime.data.completed_anime.push({

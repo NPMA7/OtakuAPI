@@ -49,7 +49,7 @@ const completedAnime = async ({ page }) => {
             .trim();
           const url = $(this).find("div.detpost div.thumb a").attr("href")    ?.replace(
             `${ANIME_BASEURL}/anime/`,
-            ANIME_BASEURL.includes("localhost") ? "https://otaku-api.vercel.app/v1/anime/slug/" : "http://localhost:4444/v1/anime/slug/"
+            "https://otaku-api.vercel.app/v1/anime/slug/"
           );
           completedAnime.data.push({
             title,
