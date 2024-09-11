@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const { ANIME_BASEURL } = process.env;
+const { URL } = process.env;
 
 const homeAnime = async () => {
   try {

@@ -8,7 +8,7 @@ const { DONGHUA_BASEURL } = process.env;
 const episodeDonghua = async ({ slug }) => {
   try {
     const episodeResponse = await axios.get(`${DONGHUA_BASEURL}/${slug}`);
-    
+
     let episodeDonghua = {
       status: "Ok",
       data: {
@@ -89,7 +89,10 @@ const episodeDonghua = async ({ slug }) => {
         const slug = slugAttr
           ? slugAttr.replace(`${DONGHUA_BASEURL}/anime/`, "")
           : null;
-        const url = slugAttr;
+        const url = slugAttr?.replace(
+          `${DONGHUA_BASEURL}/anime/`,
+          "https://otaku-api.vercel.app/v1/donghua/slug/"
+        );
         episodeDonghua.data.donghua.title = title;
         episodeDonghua.data.donghua.slug = slug;
         episodeDonghua.data.donghua.url = url;
@@ -160,7 +163,12 @@ const episodeDonghua = async ({ slug }) => {
             .attr("href")
             ?.replace(`${DONGHUA_BASEURL}/genres/`, "")
             .replace("/", "");
-          const url = $(this).attr("href");
+          const url = $(this)
+            .attr("href")
+            ?.replace(
+              `${DONGHUA_BASEURL}/`,
+              "https://otaku-api.vercel.app/v1/donghua/"
+            );
 
           episodeDonghua.data.donghua.genres.push({
             name,
@@ -176,7 +184,10 @@ const episodeDonghua = async ({ slug }) => {
         const episodeSlug = episodeSlugAttr
           ? episodeSlugAttr.replace(`${DONGHUA_BASEURL}/`, "").replace("/", "")
           : null;
-        const episodeUrlMain = episodeSlugAttr;
+        const episodeUrlMain = episodeSlugAttr?.replace(
+          `${DONGHUA_BASEURL}/`,
+          "https://otaku-api.vercel.app/v1/donghua/episode/"
+        );
 
         episodeDonghua.data.episodes_list.push({
           episode: episodeTitle,
@@ -196,7 +207,12 @@ const episodeDonghua = async ({ slug }) => {
           : null;
         const poster = $(this).find("div.limit img").prop("data-src");
         const type = $(this).find("div.limit div.typez").text().trim();
-        const url = $(this).attr("href");
+        const url = $(this)
+          .attr("href")
+          ?.replace(
+            `${DONGHUA_BASEURL}/anime/`,
+            "https://otaku-api.vercel.app/v1/donghua/slug/"
+          );
 
         episodeDonghua.data.recommendations.push({
           title,

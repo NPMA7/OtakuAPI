@@ -4,7 +4,7 @@ import ongoingDonghua from "../src/donghua/ongoing.js";
 import homeDonghua from "../src/donghua/home.js";
 import genresDonghua from "../src/donghua/genres.js";
 import mapGenresDonghua from "../src/donghua/mapGenres.js";
-import Donghua from "../src/donghua/donghua.js";
+import Donghua from "../src/donghua/slug.js";
 import episodeDonghua from "../src/donghua/episode.js";
 import searchDonghua from "../src/donghua/search.js";
 const routerDonghua = express.Router();

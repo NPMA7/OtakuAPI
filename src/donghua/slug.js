@@ -128,7 +128,12 @@ const Donghua = async ({ slug }) => {
             .attr("href")
             ?.replace(`${DONGHUA_BASEURL}/genres/`, "")
             .replace("/", "");
-          const url = $(this).attr("href");
+          const url = $(this)
+            .attr("href")
+            ?.replace(
+              `${DONGHUA_BASEURL}/`,
+              "https://otaku-api.vercel.app/v1/donghua/"
+            );
 
           Donghua.data.genres.push({
             name,
@@ -145,7 +150,13 @@ const Donghua = async ({ slug }) => {
           .attr("href")
           ?.replace(`${DONGHUA_BASEURL}`, "")
           .replace("/", "");
-        const url = $(this).find("a").attr("href");
+        const url = $(this)
+          .find("a")
+          .attr("href")
+          ?.replace(
+            `${DONGHUA_BASEURL}/`,
+            "https://otaku-api.vercel.app/v1/donghua/episode/"
+          );
         Donghua.data.episodes_list.push({
           episode,
           slug,
@@ -160,7 +171,12 @@ const Donghua = async ({ slug }) => {
           .replace("/", "");
         const poster = $(this).find("div.limit img").prop("data-src");
         const type = $(this).find("div.limit div.typez").text().trim();
-        const url = $(this).attr("href");
+        const url = $(this)
+          .attr("href")
+          ?.replace(
+            `${DONGHUA_BASEURL}/anime/`,
+            "https://otaku-api.vercel.app/v1/donghua/slug/"
+          );
 
         Donghua.data.recommendations.push({
           title,

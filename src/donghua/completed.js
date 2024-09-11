@@ -40,7 +40,13 @@ const completedDonghua = async ({ page }) => {
           : null;
         const poster = $(this).find("img").prop("data-src");
         const status = $(this).find("div.bt span.epx").text().trim();
-        const url = $(this).find("a.tip").attr("href");
+        const url = $(this)
+          .find("a.tip")
+          .attr("href")
+          ?.replace(
+            `${DONGHUA_BASEURL}/anime/`,
+            "https://otaku-api.vercel.app/v1/donghua/slug/"
+          );
 
         completedDonghua.data.completed_donghua.push({
           title,

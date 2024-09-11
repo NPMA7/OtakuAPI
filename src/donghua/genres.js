@@ -22,8 +22,13 @@ const genresDonghua = async () => {
           .attr("href")
           ?.replace(`${DONGHUA_BASEURL}/genres/`, "")
           .replace("/", "");
-        const url = $(this).find("a").attr("href");
-
+        const url = $(this)
+          .find("a")
+          .attr("href")
+          ?.replace(
+            `${DONGHUA_BASEURL}/`,
+            "https://otaku-api.vercel.app/v1/donghua/"
+          );
         genresDonghua.data.push({
           name,
           slug,

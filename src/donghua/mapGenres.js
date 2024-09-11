@@ -36,7 +36,12 @@ const mapGenresDonghua = async ({ slug, page }) => {
           .find("div.limit div.bt span.epx")
           .text()
           .trim();
-        const url = $(this).attr("href");
+        const url = $(this)
+          .attr("href")
+          ?.replace(
+            `${DONGHUA_BASEURL}/anime/`,
+            "https://otaku-api.vercel.app/v1/donghua/slug/"
+          );
 
         mapGenresDonghua.data.donghua.push({
           title,
